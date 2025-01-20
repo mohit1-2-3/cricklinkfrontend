@@ -1,0 +1,241 @@
+body {
+  background-color: #272929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 255, 255);
+}
+
+
+#header {
+  background-color: #272929;
+  position: sticky;
+  z-index: 22;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#sectionLine {
+  border: 1px solid #FFFFFF;
+  width: 80%;
+  height: 1px;
+  overflow: hidden;
+}
+
+#header input {
+  background-color: #3D3C3F;
+  outline: none;
+  border: none;
+}
+
+#imgg:only-child {
+  transform: translate(0, -70px);
+}
+
+/* ~~~~~~~~~~ Footer ~~~~~~~~~~~~ */
+#footer {
+  background: #272929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#footer-content {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 20rem;
+  box-sizing: border-box;
+}
+
+#logo {
+  background: 50% / cover no-repeat;
+  width: 13rem;
+  height: 10rem;
+}
+
+#sectionDivision {
+  width: 100vw;
+  transform: translate(cover);
+}
+
+#footer-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#footer-list-content {
+  overflow-wrap: break-word;
+  /* font-family: 'Inter'; */
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  #footer-list {
+    flex-direction: column;
+  }
+}
+
+#social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 15rem;
+  box-sizing: border-box;
+}
+
+#social-media svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+#label {
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #525d6f;
+  opacity: .4;
+  transition: opacity .4s ease-in-out;
+  display: block;
+  width: calc(100% - 48px);
+  text-align: right;
+  z-index: 100;
+  user-select: none;
+}
+
+.tabs input[type="radio"] {
+  display: none;
+  width: 0;
+}
+
+#label:hover,
+input[type="radio"]:checked+label {
+  opacity: 1;
+}
+
+.popup {
+  width: 60%;
+  height: 80%;
+  min-height: 480px;
+  max-height: 480px;
+  border-radius: 48px;
+  box-sizing: border-box;
+  border: 16px solid #ebf0f4;
+  background-color: #dfe6ed;
+  overflow: hidden;
+  box-shadow: 16px 16px 48px #2e364330;
+}
+
+.tabs {
+  width: 100%;
+  max-width: 240px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.marker {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  flex-direction: column;
+  top: calc(-100%);
+  left: 0;
+  transition: transform .2s ease-in-out;
+}
+
+.marker #bottom,
+.marker #top {
+  background-color: #ebf0f4;
+  box-shadow: 32px 32px 48px #2e364315;
+}
+
+.marker #top {
+  height: calc(50%);
+  margin-bottom: auto;
+  border-radius: 0 0 32px 0;
+}
+
+.marker #bottom {
+  height: calc(50% - 72px);
+  border-radius: 0 32px 0 0;
+}
+
+#tab1:checked~.marker {
+  transform: translateY(calc(calc(50% / 6) * 0));
+}
+
+#tab2:checked~.marker {
+  transform: translateY(calc(calc(50% / 6) * 1));
+}
+
+#tab3:checked~.marker {
+  transform: translateY(calc(calc(50% / 6) * 2));
+}
+
+#tab4:checked~.marker {
+  transform: translateY(calc(calc(50% / 6) * 3));
+}
+
+#tab5:checked~.marker {
+  transform: translateY(calc(calc(50% / 6) * 4));
+}
+
+#tab6:checked~.marker {
+  transform: translateY(calc(calc(51% / 6) * 5));
+}
+
+/* ~~~~~~~~~~~~~~~~~signIn & signUp~~~~~~~~~~~~~~~~~~~ */
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+#container1 {
+  background-color: #272929;
+  height: 100vh;
+}
+
+#mainDiv {
+  border-radius: 18px;
+  background: linear-gradient(225deg, #232525, #2a2c2c);
+  box-shadow: -11px 11px 22px #181919,
+    11px -11px 22px #363939;
+  width: 70vw;
+}
+
+#signImg {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.forgot-password {
+  color: red; /* Or any other visible color */
+}
+
+.forgot-password:hover {
+  color: lightgray; /* Optional hover effect */
+  text-decoration: underline;
+}
+
+

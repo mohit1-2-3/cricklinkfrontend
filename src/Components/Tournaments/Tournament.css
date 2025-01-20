@@ -1,0 +1,23 @@
+.contenar {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
+    color: #ffffff;
+}
+
+#teamCard {
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 300px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#teamCard ::-webkit-scrollbar {
+    display: none;
+    background-color: #080808;
+}
+

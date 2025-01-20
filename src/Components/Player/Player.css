@@ -1,0 +1,140 @@
+/* ~~~~~~~~~~~~~~ Player My Profile ~~~~~~~~~~~~ */
+.contenarrr {
+    width: 100vw;
+    height: auto;
+    border-radius: 10px;
+}
+
+.img {
+    height: 20rem;
+    width: 20%;
+    background-position: center;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoGFWd4XMItj77K3ZV7gygM8o_R1SoWDnHtw&s');
+    background-size: cover;
+}
+
+#button {
+    width: 40%;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+#button button {
+    width: 10vw;
+}
+
+/* ~~~~~~~~~~~~~~ Player Profile ~~~~~~~~~~~~~~~~~*/
+
+#login-box {
+    padding: 15px 40px;
+    background: rgba(27, 29, 29);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+#user-box {
+    position: relative;
+}
+
+#user-box input {
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+#user-box label {
+    font-weight: 600;
+    font-size: 16px;
+    color: #6e6e6e;
+    pointer-events: none;
+    transition: .5s;
+}
+
+#login-box form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+
+#login-box a:hover {
+    background: #1f9e27;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ffffff,
+        0 0 25px #1f9e27,
+        0 0 50px #1f9e27,
+        0 0 100px #1f9e27
+}
+
+#login-box a span {
+    position: absolute;
+    display: block;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+#login-box a span:nth-child(1) {
+    bottom: 2px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03f40f);
+    animation: btn-anim1 2s linear infinite;
+}
+
+/* ~~~~~~~~~~~~~~~ View More Button ~~~~~~~~~~~~~~~~~ */
+.btn-secondary {
+    color: #fff;
+    background-color: #242424;
+    border-color: #181c1c;
+    transition: all 0.3s ease-in-out;
+    /*set the color you want here*/
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #727272;
+    border-color: #474747;
+    /*set the color you want here*/
+}
+
+#filterArea {
+    overflow-x: hidden;
+    max-height: 100vh;
+    padding-right: 1rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* overflowY: 'auto', maxHeight: '70rem', paddingRight: '1rem' */
+#filterArea ::-webkit-scrollbar {
+    display: none;
+}
