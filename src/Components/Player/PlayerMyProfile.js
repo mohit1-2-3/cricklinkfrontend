@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+
+import TeamsPage from "../Team/TeamPage";
+
 import { signOut } from "../../redux-config/UserSlice";
+
 
 
 function LeftSidebar() {
@@ -43,6 +47,8 @@ function LeftSidebar() {
   console.log("=================<<<<<<<<<>>>>>>==================");
 
   return (
+    <>
+   
     <div
       className="offcanvas offcanvas-start p-5 text-bg-dark"
       tabIndex="-1"
@@ -165,6 +171,8 @@ function LeftSidebar() {
     </div>
 
     </div>
+    
+    </>
   );
 }
 
@@ -182,6 +190,7 @@ function LeftSidebar() {
   //==================================================
 
   return (
+    <>
     <nav
       className="navbar navbar-dark sticky-top p-3"
       style={{ backgroundColor: "#090129" }}
@@ -227,6 +236,8 @@ function LeftSidebar() {
         </div>
       </div>
     </nav>
+     <TeamsPage/>
+    </>
   );
 }
 

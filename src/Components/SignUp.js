@@ -27,7 +27,13 @@ export default function SignUpForm() {
 
     useEffect(() => {
 
+
+
+//         axios.get(url?.category?.all)
+
+
         axios.get(url.category?.all)
+
             .then(response => {
                 setCategories(response.data.data);
             })
@@ -92,6 +98,7 @@ export default function SignUpForm() {
     };
 
     try {
+        console.log("Hellooooooo.......")
         console.log('HRitik>>> data:', updatedFormData);
         const response = await axios.post(url.player.signup, updatedFormData);
         console.log('API Response:', response.data);

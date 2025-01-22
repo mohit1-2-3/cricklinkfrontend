@@ -19,6 +19,7 @@ let url = {
     },
      
         player: {
+
             all: 'http://localhost:3000/user/playerList',
             viewcard: 'http://localhost:3000/user/profile/:id',
         //  signup: 'http://localhost:3000/user/sigup',
@@ -29,6 +30,11 @@ let url = {
             // signup: 'http://localhost:3001/user/signUp',
             // signin: 'http://localhost:3001/user/signIn', 
             // sendOTP: "http://localhost:3001/user/sendOTP"
+
+            signup: 'http://localhost:3001/user/signup',
+            signin: 'http://localhost:3001/user/signIn', 
+            sendOTP: "http://localhost:3001/user/sendOTP"
+
         },
    
     
