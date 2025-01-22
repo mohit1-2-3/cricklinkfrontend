@@ -1,43 +1,17 @@
-// --------------------------------------------------------------------------
-
-import { useNavigate } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import axios from "axios";
+import url from "../../URL/url.js";
+import { TournamentCreation } from "../Tournaments/CreateTournament";
+import UpcomingEvent from "./HomePage"
 
 function LeftSidebar() {
-  const [selectedPlayerId, setSelectedPlayerId] = useState({});
-
-  // *****************************************
-
   const navigate = useNavigate();
-  const player = useSelector((state) => state.User.user);
-
-  // ******************************************
-
-  const token = useSelector((state) => state.User.token);
-  const name = useSelector((state) => state.User.user.name);
-  const contact = useSelector((state) => state.User.user.contact);
-  const email = useSelector((state) => state.User.user.email);
-  const experience = useSelector((state) => state.User.user.profile.experience);
-  const skill = useSelector((state) => state.User.user.profile.skills);
-  const location = useSelector((state) => state.User.user.profile.location);
-  const id = useSelector((state) => state.User.user._id);
-
   const profile_photo = useSelector((state) => state.User.user.profile_photo);
-  console.log("=================<<<<<<<<<>>>>>>==================");
-  console.log(token);
-  console.log(name);
-  console.log(contact);
-  console.log(email);
-  console.log(player);
-
-  console.log(experience);
-  console.log(skill);
-  console.log(location);
-  console.log(id);
-  console.log(profile_photo);
-  console.log("=================<<<<<<<<<>>>>>>==================");
+  const id = useSelector((state) => state.User.user._id);
+  const name = useSelector((state) => state.User.user.name);
 
   return (
     <div
@@ -53,23 +27,9 @@ function LeftSidebar() {
         aria-label="Close"
       ></button>
       <div className="offcanvas-header ps-5">
-        {/* <img src="assets/logo.png" id="logo" alt="logo" /> */}
-        {/* ============================================================     */}
-        {/* <a href="https://your-link-here.com">
-
-{profile_photo ? (
-        <img src={profile_photo} id="logo" alt="User Profile" />
-    ) : (
-        <img src="assets/logo.png" id="logo" alt="Default Logo" />
-       
-    )
-}
-</a> */}
-
         {profile_photo ? (
           <img
             src={profile_photo}
-            id="logo"
             alt="User Profile"
             style={{
               borderRadius: "50%",
@@ -77,16 +37,11 @@ function LeftSidebar() {
               height: "100px",
               cursor: "pointer",
             }}
-            onClick={() => {
-              console.log("Navigating to PlayerProfile with player:", player); // Log the player data
-              setSelectedPlayerId(id);
-              navigate("/PlayerProfile", { state: { id } });
-            }}
+            onClick={() => navigate("/OrganizerMyProfile", { state: { id } })}
           />
         ) : (
           <img
             src="assets/logo.png"
-            id="logo"
             alt="Default Logo"
             style={{
               borderRadius: "50%",
@@ -94,222 +49,163 @@ function LeftSidebar() {
               height: "100px",
               cursor: "pointer",
             }}
-            onClick={() => {
-              console.log("Navigating to PlayerProfile with player:", player); // Log the player data
-              setSelectedPlayerId(id);
-              navigate("/PlayerProfile", { state: { id } });
-            }}
+            onClick={() => navigate("/OrganizerMyProfile", { state: { id } })}
           />
         )}
-
-        {/* =============================================================== */}
-
-        <h4 className="mt-3 text-white">{name ? name : "Guest User"}</h4>
+        <h4 className="mt-3 text-white">{name || "Guest User"}</h4>
       </div>
       <div className="offcanvas-body ps-5">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li className="nav-item">
-            {/* <HashLink className="nav-link active" to="/#banner">
-              Home
-            </HashLink> */}
-
             <button
               className="nav-link active"
-              onClick={() => {
-                console.log("Navigating to PlayerProfile with player ID:", id); // Log the player data
-                setSelectedPlayerId(id); // Update state or perform any logic
-                navigate("/PlayerProfile", { state: { id } }); // Navigate with state
-              }}
+              onClick={() => navigate("/OrganizerMyProfile", { state: { id } })}
             >
               My Profile
             </button>
           </li>
           <li className="nav-item">
-            <HashLink className="nav-link" to="/#AboutContainer">
-              About
-            </HashLink>
-          </li>
-
-          <li className="nav-item">
-            <HashLink className="nav-link" to="/allTournament">
+            <button className="nav-link" onClick={() => navigate("/allTournament")}>
               Tournament
-            </HashLink>
-          </li>
-          <li className="nav-item">
-            <HashLink className="nav-link" to="/teams">
-              Teams
-            </HashLink>
-          </li>
-          <li className="nav-item">
-            <HashLink className="nav-link" to="/#contactUs">
-              Contact Us
-            </HashLink>
+            </button>
           </li>
         </ul>
       </div>
-
       <div className="d-flex justify-content-center align-items-center mt-auto">
-      <button
-        className="btn btn-danger w-75 mt-4"
-        onClick={() => {
-          console.log("Logging out...");
-          navigate("/");
-          // Add logout logic here
-        }}
-      >
-        Logout
-      </button>
-    </div>
-
+        <button
+          className="btn btn-danger w-75 mt-4"
+          onClick={() => {
+            navigate("/");
+            console.log("Logged out.");
+          }}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
 
-// function RightSidebar({ navigate }) {
-//   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-//   const currentUser = sessionStorage.getItem("currentUser");
-//   return (
-//     <div
-//       className="offcanvas offcanvas-end pt-5 text-bg-dark"
-//       tabIndex="-1"
-//       id="rightSidebar"
-//       aria-labelledby="rightSidebarLabel"
-//     >
-//       <button
-//         type="button"
-//         className="ms-5 btn-close btn-close-white"
-//         data-bs-dismiss="offcanvas"
-//         aria-label="Close"
-//       ></button>
-//       <div className="offcanvas-header mt-5">
-//         <div className="container">
-//           <div
-//             id="imagebox"
-//             className="rounded-5 border ps-5 pe-5 pt-3 pb-3 w-100"
-//           >
-//             <div
-//               id="imgg"
-//               style={{ height: "140px" }}
-//               className="d-flex flex-column gap-3 align-items-center"
-//             >
-//               {isLoggedIn ? (
-//                 <>
-//                   <img
-//                     src="11.jpg"
-//                     width="100vw"
-//                     className="img-fluid rounded-circle border-dark"
-//                     alt="Avatar"
-//                   />
-//                   <h5>Cricket Champion Hub</h5>
-//                   <h6>{currentUser}</h6>
-//                 </>
-//               ) : (
-//                 <>
-//                   {/* <img src="https://t4.ftcdn.net/jpg/00/65/77/27/240_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" width='100vw' className="img-fluid rounded-circle border-dark" alt="Avatar" />
-//                                     <h5>Guest</h5>
-//                                     <button type="button" onClick={() => navigate('/signIn')} className="btn btn-primary">Log In</button> */}
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       {isLoggedIn && (
-//         <div className="offcanvas-body mt-5">
-//           <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-//             <li className="nav-item">
-//               <a className="nav-link active" href="#">
-//                 My Profile
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 About
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 Contact Us
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 LogOut
-//               </a>
-//             </li>
-//           </ul>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-export default function Header({ setSearchedList }) {
-  let navigate = useNavigate();
-
-  const [selectedPlayerId, setSelectedPlayerId] = useState({});
+export default function OrganizerProfile({ setSearchedList }) {
+  const navigate = useNavigate();
+  const [tournament, setTourna] = useState([]);
   const id = useSelector((state) => state.User.user._id);
 
-  // let handleProfile = () => {
-  //   if (sessionStorage.getItem("isLoggedIn")) {
-  //     let user = sessionStorage.getItem("currentUser");
-  //     user === "player"
-  //       ? navigate("/playerProfile")
-  //       : user === "organizer"
-  //       ? navigate("/organizerProfile")
-  //       : navigate("/adminProfile");
-  //   } else {
-  //     navigate("/signIn");
-  //   }
-  // };
+  useEffect(() => {
+    getTournamentbyId();
+  }, []);
 
+
+  const getTournamentbyId = async () => {
+    try {
+      console.log("organixer id : state.id : " + id)
+      let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
+      console.log(response.data.data);
+      setTourna(response.data.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  const viewTourna = (id) => {
+    navigate(`/tournamentById/${id}`)
+  }
   return (
-    <nav
-      className="navbar navbar-dark sticky-top p-3"
-      style={{ backgroundColor: "#090129" }}
+    <>
+      <nav
+        className="navbar navbar-dark sticky-top p-3"
+        style={{ backgroundColor: "#090129" }}
+      >
+        <div className="container-fluid">
+          <LeftSidebar />
+          <div className="col-md-1 col-2">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#leftSidebar"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div className="col-md-4 col-6 offset-md-2 offset-1">
+            <input
+              type="text"
+              onChange={(e) => setSearchedList(e.target.value)}
+              placeholder="Search"
+              className="form-control rounded-pill text-light"
+              style={{ backgroundColor: "#272727" }}
+            />
+          </div>
+          <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => navigate(`/UpdateProfileForm/${id}`)}
+            >
+              Update Profile
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => navigate("/createTournamentReq")}
+            >
+              Create Tournament
+            </button>
+          </div>
+        </div>
+      </nav>
+      {/* Pass the organizer ID to the TournamentById component */}
+      <div className="container mt-4 text-white">
+  <h1 className="text-center mb-4 text-light">Your Events</h1>
+  <div className="d-flex justify-content-end mb-3">
+    <button
+      className="btn btn-primary"
+      onClick={() => navigate("/UpcomingTournamentsCards")}
     >
-      <div className="container-fluid">
-        <LeftSidebar />
-        {/* =========================================================== */}
-
-        {/* ================================================================ */}
-        {/* <RightSidebar navigate={navigate} /> */}
-        <div className="col-md-1 col-2">
+      View All
+    </button>
+  </div>
+  {/* Horizontal Scrollable Section */}
+  <div className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
+    {tournament.map((tourna, index) => (
+      <div
+        key={index}
+        className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
+        style={{ minWidth: "250px", display: "inline-block" }}
+      >
+        <h6 className="text-primary">{tourna.TournamentName}</h6>
+        <p>
+          <strong>Organizer:</strong> {tourna.organizerId?.name || "Unknown"}
+        </p>
+        <p>
+          <strong>Start:</strong> {new Date(tourna.startDate).toLocaleDateString()}
+        </p>
+        <p>
+          <strong>End:</strong> {new Date(tourna.endDate).toLocaleDateString()}
+        </p>
+        <div className="d-flex justify-content-between mt-2">
           <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#leftSidebar"
+            className="btn btn-info btn-sm"
+            onClick={() => viewTourna(tourna._id)}
           >
-            <span className="navbar-toggler-icon"></span>
+            Details
           </button>
-        </div>
-        <div className="col-md-4 col-6 offset-md-2 offset-1">
-          <input
-            type="text"
-            onChange={(e) => setSearchedList(e.target.value)}
-            placeholder="Search"
-            className="form-control rounded-pill text-light"
-            style={{ backgroundColor: "#272727" }}
-          />
-        </div>
-        <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
-          <i
-            className="btn fa-solid fa-bell fa-xl"
-            style={{ color: "#ffffff", marginTop: "10px" }}
-          ></i>
-
           <button
-            type="button"
-            className="btn btn-primary mb-2"
-            onClick={() => navigate(`/UpdateProfileForm/${id}`)}
-          >
-            Update Profile
+            className="btn btn-warning btn-sm"
+            onClick={() => viewTourna(tourna._id)}>
+            Update Schedule
           </button>
         </div>
       </div>
-    </nav>
+    ))}
+  </div>
+</div>
+
+
+<UpcomingEvent/>
+
+    </>
   );
 }
-
-// // -------------------------------------------------------------------------

@@ -26,7 +26,7 @@ export default function SignUpForm() {
     });
 
     useEffect(() => {
-        axios.get(url.category.all)
+        axios.get(url?.category?.all)
             .then(response => {
                 setCategories(response.data.data);
             })
@@ -95,6 +95,8 @@ export default function SignUpForm() {
         const response = await axios.post(url.player.signup, updatedFormData);
         console.log('API Response:', response.data);
         handleAlert('success', 'Successfully signed up');
+        navigate("/OrganizerProfile");
+
     } catch (error) {
         console.error('API Error:', error.response ? error.response.data : error.message);
         handleAlert('error', 'Signup failed');

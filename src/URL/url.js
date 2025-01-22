@@ -3,12 +3,12 @@ let url = {
     //     signup: 'http://localhost:3000/admin/signUp'
     //     , signin: 'http://localhost:3000/admin/signIn'
     // },
-    // organizer: {
+    organizer: {
     //     signin: 'http://localhost:3000/organizer/signIn'
     //     , signup: 'http://localhost:3000/organizer/signUp'
     //     , all: 'http://localhost:3000/organizer/viewAll'
-    //     , particular: 'http://localhost:3000/organizer/particular'
-    // },
+        Organizer_profile: 'http://localhost:3000/user/detail'
+    },
     player: {
         all: 'http://localhost:3000/user/viewallplayers'
         , viewcard: 'http://localhost:3000/user/profile/:id'
@@ -19,17 +19,23 @@ let url = {
     },
      
         player: {
-            signup: 'http://localhost:3001/user/signUp',
-            signin: 'http://localhost:3001/user/signIn', 
+            //    signup: 'http://localhost:3000/user/sigup',
+            signup: 'http://localhost:3000/user/signup',
+            signin: 'http://localhost:3000/user/signin', 
             sendOTP: "http://localhost:5000/api/user/sendOTP"
         },
    
     
     tournament: {
-        all: 'http://localhost:3000/tournament/viewAllTournament'
-        , particular: 'http://localhost:3000/tournament/viewParticular'
-        , registerTeam: 'http://localhost:3000/tournament/registerTeam'
+        TOURNAMENT_LIST : "http://localhost:3000/Tournament/tournamentList",
+        TOURNAMENT_BY_ID : "http://localhost:3000/Tournament",
+         particular: 'http://localhost:3001/tournament/viewParticular'
+        , CREATE_TOURNAMENT: 'http://localhost:3000/Tournament/createTournamentReq'
     },
+    match : {
+        MATCH_LIST : "http://localhost:3000/match/matches",
+
+    }
     // team: {
     //     all: 'http://localhost:3000/team/viewAll'
     //     , byTournament: 'http://localhost:3000/team/byTournament'
