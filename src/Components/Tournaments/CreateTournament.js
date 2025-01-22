@@ -33,7 +33,7 @@ export const TournamentCreation = () => {
             console.log("Form data:", formData); // Check the structure of the data
             const response = await axios.post(url.tournament.CREATE_TOURNAMENT, formData);
 
-            console.log("Full response:", response.data); // Check the full response structure
+            console.log("Full response:", response.data.insert); // Check the full response structure
 
             // Ensure the response structure has the data we expect
             if (response.data && response.data.insert) {
@@ -123,6 +123,20 @@ export const TournamentCreation = () => {
                         name="endDate"
                         className="form-control"
                         value={formData.endDate}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div className="form-group mb-3">
+                    <label htmlFor="endDate" className="form-label">
+                        Entry Fees :
+                    </label>
+                    <input
+                        type="text"
+                        id="entry_fees"
+                        name="entry_fees"
+                        className="form-control"
+                        value={formData.entry_fees}
                         onChange={handleInputChange}
                         required
                     />

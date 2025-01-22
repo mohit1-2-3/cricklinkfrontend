@@ -134,7 +134,7 @@ export default function OrganizerMyProfile() {
                 cursor: "pointer",
                 fontSize: "1.2rem",
               }}
-              onClick={() => navigate("/TournamentCreation")}
+              onClick={() => navigate("/createTournamentReq")}
             >
               Create Tournament
             </button>
