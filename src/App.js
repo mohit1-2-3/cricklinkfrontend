@@ -31,7 +31,8 @@ import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
 import Teams from './Components/Team/team.js';
 import TeamDetail from './Components/Team/TeamDetails.js';
 import RegistrationForm from './Components/Team/registerTeam.js';
-
+import TeamsPage from './Components/Team/TeamPage.js';
+import PlayersDetail from './Components/Player/playersDetail.js';
 import './App.css'
 
 function App() {
@@ -43,9 +44,9 @@ function App() {
       <Route path='/signIn' element={<SignIn />} />
       <Route path='/signUp' element={<SignUp />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
-
-      <Route path='/teams' element={<Teams />} />
-      <Route path='/teamDetails' element={<TeamDetail />} />
+      <Route path="/Teams" element={<TeamsPage/>}></Route>
+      {/* <Route path='/teams' element={<Teams />} /> */}
+      {/* <Route path='/teamDetails' element={<TeamDetail />} /> */}
       <Route path='/registerTeam' element={<RegistrationForm />} />
 
       <Route path='/PlayerProfile' element={<PlayerProfile />} />
@@ -64,6 +65,10 @@ function App() {
       <Route path='/About' element={<About />} />
       <Route path="/createTournamentReq" element={<TournamentCreation/>}/>
       <Route path='/ContactUs' element={<ContactUs />} />
+
+      <Route path="/Team/:id" element={<TeamDetail/>} ></Route>
+    <Route path="/user/:id" element={<PlayersDetail/>} ></Route>
+   
     </Routes>
     {/* <Example/> */}
   </>

@@ -42,7 +42,7 @@ export default function Header({ setSearchedList }) {
                                 <HashLink className="nav-link" to="/UpcomingTournamentsCards">Tournament </HashLink>
                             </li>
                             <li className="nav-item">
-                                <HashLink className="nav-link" to="/teams">Teams </HashLink>
+                                <HashLink className="nav-link" to="/TeamPage">Teams </HashLink>
                             </li>
                             <li className="nav-item">
                                 <HashLink className="nav-link" to="/ContactUs">Contact Us </HashLink>
@@ -113,7 +113,7 @@ export default function Header({ setSearchedList }) {
                 </div>
 
                 <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
-                    <i className="btn fa-solid fa-bell fa-xl" style={{ color: '#ffffff', marginTop: '10px' }}></i>
+                    {/* <i className="btn fa-solid fa-bell fa-xl" style={{ color: '#ffffff', marginTop: '10px' }}></i> */}
                     <button className='bg-transparent p-2 rounded-circle' type="button" data-bs-toggle="offcanvas" data-bs-target="#rightSidebar" aria-controls="rightSidebar" aria-label="Toggle navigation">
                         <i className="fa-solid fa-user fa-lg" style={{ color: '#ffffff' }}></i>
                     </button>
