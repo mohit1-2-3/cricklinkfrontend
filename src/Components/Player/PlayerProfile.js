@@ -146,7 +146,7 @@ export default function PlayerProfile() {
     console.log(state.playerId);
     console.log(state.id);
     axios
-      .get(`http://localhost:3001/user/viewProfile/${state.id}`)
+      .get(`http://localhost:3001/user/profile/${state.id}`)
       .then((response) => {
         setPlayerData(response.data);
       })
@@ -170,26 +170,30 @@ export default function PlayerProfile() {
       <div className="text-center">
         <h2 className="text-decoration-underline">Player Details</h2>
       </div>
-      <div className="d-flex justify-content-around mt-5 flex-wrap">
+      <div className="d-flex justify-content-around mt-2 flex-wrap">
         <div
           id="PlayerProfileImage"
           className="col-md-4 d-flex flex-column align-items-center"
         >
           <img
-            src={playerData.profile_photo}
+            src={playerData.profile_photo||"/user.webp"}
             width="80%"
             height="300rem"
             alt="Player"
           />
-          <h4 className="mt-2 text-center" style={{ color: "#c3c3c3" }}>
+          <h4 className="mt-2 text-center" style={{ color: "#ffffff" }}>
             {playerData.name}
           </h4>
           <div>
             <p className="mt-3">
+
+//               <h5 >Skills :&nbsp;&nbsp;{ playerData?.profile?.skills }</h5>
+
               <h5>Skills:</h5>
               <label style={{ color: "white" }}>
                 {playerData.profile.skills || "N/A"}
               </label>
+
             </p>
           </div>
         </div>

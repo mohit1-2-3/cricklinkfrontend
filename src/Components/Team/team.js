@@ -10,7 +10,7 @@ export default () => {
     const [teamList, setTeamList] = useState([]);
 
     useEffect(() => {
-        axios.get(url.team.all)
+        axios.get(url?.team?.all)
             .then(response => {
                 console.log('response.data', response);
                 setTeamList(response.data.data);
