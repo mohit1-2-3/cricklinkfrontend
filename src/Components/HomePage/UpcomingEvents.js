@@ -34,7 +34,6 @@ function UpcomingEvent() {
     
     return (
         <div className="container mt-4 text-white">
-            <h1 className="text-center mb-4 text-light">Upcoming Events</h1>
             <div className="d-flex justify-content-end mb-3">
                 <button className="btn btn-primary" onClick={() => navigate("/UpcomingTournamentsCards")}>
                     View All

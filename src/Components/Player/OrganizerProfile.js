@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import url from "../../URL/url.js";
-import { TournamentCreation } from "../Tournaments/CreateTournament";
-import UpcomingEvent from "./HomePage"
+// import { TournamentCreation } from "../Tournaments/CreateTournament";
+import UpcomingEvent from "../HomePage/UpcomingEvents"
 
 function LeftSidebar() {
   const navigate = useNavigate();
@@ -158,53 +158,54 @@ export default function OrganizerProfile({ setSearchedList }) {
       </nav>
       {/* Pass the organizer ID to the TournamentById component */}
       <div className="container mt-4 text-white">
-  <h1 className="text-center mb-4 text-light">Your Events</h1>
-  <div className="d-flex justify-content-end mb-3">
-    <button
-      className="btn btn-primary"
-      onClick={() => navigate("/UpcomingTournamentsCards")}
-    >
-      View All
-    </button>
-  </div>
-  {/* Horizontal Scrollable Section */}
-  <div className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
-    {tournament.map((tourna, index) => (
-      <div
-        key={index}
-        className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
-        style={{ minWidth: "250px", display: "inline-block" }}
-      >
-        <h6 className="text-primary">{tourna.TournamentName}</h6>
-        <p>
-          <strong>Organizer:</strong> {tourna.organizerId?.name || "Unknown"}
-        </p>
-        <p>
-          <strong>Start:</strong> {new Date(tourna.startDate).toLocaleDateString()}
-        </p>
-        <p>
-          <strong>End:</strong> {new Date(tourna.endDate).toLocaleDateString()}
-        </p>
-        <div className="d-flex justify-content-between mt-2">
+        <h1 className="text-center mb-4 text-light">Your Events</h1>
+        <div className="d-flex justify-content-end mb-3">
           <button
-            className="btn btn-info btn-sm"
-            onClick={() => viewTourna(tourna._id)}
+            className="btn btn-primary"
+            onClick={() => navigate("/UpcomingTournamentsCards")}
           >
-            Details
-          </button>
-          <button
-            className="btn btn-warning btn-sm"
-            onClick={() => viewTourna(tourna._id)}>
-            Update Schedule
+            View All
           </button>
         </div>
+        {/* Horizontal Scrollable Section */}
+        <div className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
+          {tournament.map((tourna, index) => (
+            <div
+              key={index}
+              className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
+              style={{ minWidth: "250px", display: "inline-block" }}
+            >
+              <h6 className="text-primary">{tourna.TournamentName}</h6>
+              <p>
+                <strong>Organizer:</strong> {tourna.organizerId?.name || "Unknown"}
+              </p>
+              <p>
+                <strong>Start:</strong> {new Date(tourna.startDate).toLocaleDateString()}
+              </p>
+              <p>
+                <strong>End:</strong> {new Date(tourna.endDate).toLocaleDateString()}
+              </p>
+              <div className="d-flex justify-content-between mt-2">
+                <button
+                  className="btn btn-info btn-sm"
+                  onClick={() => viewTourna(tourna._id)}
+                >
+                  Details
+                </button>
+                <button
+                  className="btn btn-warning btn-sm"
+                  onClick={() => viewTourna(tourna._id)}>
+                  Update Schedule
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
-
-<UpcomingEvent/>
+      <div className="container mt-5 text-white">
+        <h1 className="text-center mb-4 text-light">Tournsments</h1>
+        <UpcomingEvent />
+      </div>
 
     </>
   );

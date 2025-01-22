@@ -96,6 +96,7 @@ export default function Home() {
                             <div id="sectionLine"></div>
                             <Players filteredData={[]} />
                             <div id="sectionLine"></div>
+                            <h1 className="text-center mb-4 text-light">Upcoming Events</h1>
                             <UpcomingEvent />
                             <div id="sectionLine"></div>
                             <ContactUs />

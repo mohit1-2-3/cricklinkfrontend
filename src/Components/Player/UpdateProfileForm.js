@@ -126,13 +126,15 @@
 
 
 
-
+//================================================================
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function UpdateProfileForm({ closeForm }) {
-    // UseParams se id fetch karo
+    
     const { id } = useParams(); 
+    const navigate = useNavigate();
     console.log("Fetched ID from params:", id);
 
     const [formData, setFormData] = useState({
@@ -173,7 +175,8 @@ export default function UpdateProfileForm({ closeForm }) {
 
             if (res.ok) {
                 alert("Profile updated successfully!");
-                closeForm(false); // Close the form after successful update
+                navigate("/PlayerMyProfile");
+                //closeForm(false); // Close the form after successful update
             } else {
                 alert(data.error || "Failed to update profile.");
             }
@@ -190,7 +193,18 @@ export default function UpdateProfileForm({ closeForm }) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" style={{ color: 'black' }}>Update Profile</h5>
-                            <button className="btn-close" onClick={closeForm}></button>
+
+                            <button
+                           className="btn-close"
+                          onClick={() => {
+                        //   closeForm(false); // Close the modal
+                            navigate("/PlayerMyProfile"); // Navigate to PlayerMyProfile page
+                             }}
+                             ></button>
+
+                            
+                        
+                        
                         </div>
                         <form onSubmit={handleFormSubmit} className="modal-body">
                             <div className="mb-3">
@@ -246,4 +260,6 @@ export default function UpdateProfileForm({ closeForm }) {
         </>
     );
 }
+
+
 

@@ -67,6 +67,13 @@ function App() {
     </Routes>
     {/* <Example/> */}
   </>
+
+const [isFormOpen, setIsFormOpen] = useState(false); 
+const openForm = () => setIsFormOpen(true); 
+const closeForm = () => setIsFormOpen(false); 
+return (
+   <div> 
+    <button onClick={openForm}>Update Profile</button> {isFormOpen && <UpdateProfileForm closeForm={closeForm} />} </div> );
 }
 
 export default App;

@@ -19,10 +19,15 @@ let url = {
     },
      
         player: {
+
             //    signup: 'http://localhost:3000/user/sigup',
             signup: 'http://localhost:3000/user/signup',
             signin: 'http://localhost:3000/user/signin', 
             sendOTP: "http://localhost:5000/api/user/sendOTP"
+
+            // signup: 'http://localhost:3001/user/signUp',
+            // signin: 'http://localhost:3001/user/signIn', 
+            // sendOTP: "http://localhost:3001/user/sendOTP"
         },
    
     
