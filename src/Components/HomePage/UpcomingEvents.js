@@ -39,12 +39,11 @@ function UpcomingEvent() {
                     View All
                 </button>
             </div>
-            <div  className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
-
-                {tournament.map((tourna, index) => (
+            <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3" style={{ whiteSpace: "nowrap" }}>
+                {tournament.slice(0, 4).map((tourna, index) => (
                     <div
                         key={index}
-                        className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
+                        className="card bg-dark text-white shadow-sm rounded d-inline-block p-3 mx-2"
                         style={{ minWidth: "250px", display: "inline-block" }}>
                         <h6 className="text-primary">{tourna.TournamentName}</h6>
                         <p>
@@ -67,14 +66,12 @@ function UpcomingEvent() {
                                 onClick={() => navigateToRegister(tourna._id)}>
                                 Register
                             </button>
-
                         </div>
                     </div>
                 ))}
             </div>
         </div>
     );
-
 }
 
 export default UpcomingEvent;

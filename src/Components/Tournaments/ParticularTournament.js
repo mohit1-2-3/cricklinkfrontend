@@ -197,7 +197,7 @@ const TournamentById = () => {
           
             <div className=" justify-content-between mt-2">
 
-            {id == tournament.organizerId ? (
+            {id === tournament.organizerId ? (
               <button
                 className="btn btn-info"
                 onClick={() => updateTournament(tournament._id)}

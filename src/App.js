@@ -25,7 +25,7 @@ import ParticularTournament from "./Components/Tournaments/ParticularTournament.
 import UpcomingTournamentsCards from "./Components/Tournaments/UpcomingTournamentsCards";
 import { TeamRegister } from "./Components/Tournaments/TeamRegistration";
 import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
-import {OrganizerTournament} from "./Components/Tournaments/Tournament";
+import {OrganizerTournament} from "./Components/Tournaments/OrganizerTournament.js";
 
 
 
@@ -58,7 +58,7 @@ function App() {
       <Route path="/OrganizerMyProfile" element={<OrganizerMyProfile/>}/>
 
 
-      <Route path='/updateTournament' element={<UpdateSchedule />} />
+      <Route path='/updateTournament/:id' element={<UpdateSchedule />} />
       <Route path="/tournamentById/:id" element={<ParticularTournament />} />
       <Route path="/UpcomingTournamentsCards" element={<UpcomingTournamentsCards/>}/>
       <Route path="/addTeam/:id" element={<TeamRegister/>}/>

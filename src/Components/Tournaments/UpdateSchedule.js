@@ -75,7 +75,7 @@ export function UpdateSchedule() {
     }
 
     return (
-        <div style={{ padding: "20px", maxWidth: "500px", margin: "auto" }}>
+        <div style={{ padding: "20px", maxWidth: "800px", margin: "auto"}}>
             <h2>Update Tournament Schedule</h2>
             <div className="alert-success mb-4">
                 {responseMessage && <p className="alert alret-success">{responseMessage}</p>}
@@ -90,7 +90,7 @@ export function UpdateSchedule() {
                         value={formData.matchId}
                         onChange={handleInputChange}
                         required
-                        style={{ width: "100%", padding: "8px" }}
+                        style={{ width: "100%", padding: "8px", color:"black"}}
                     />
                 </div>
                 <div style={{ marginBottom: "10px" }}>
@@ -101,7 +101,7 @@ export function UpdateSchedule() {
                         value={formData.team1_name}
                         onChange={handleInputChange}
                         required
-                        style={{ width: "100%", padding: "8px" }}
+                        style={{ width: "100%", padding: "8px", color:"black" }}
                     />
                 </div>
                 <div style={{ marginBottom: "10px" }}>
@@ -112,7 +112,7 @@ export function UpdateSchedule() {
                         value={formData.team2_name}
                         onChange={handleInputChange}
                         required
-                        style={{ width: "100%", padding: "8px" }}
+                        style={{ width: "100%", padding: "8px", color:"black" }}
                     />
                 </div>
                 <div style={{ marginBottom: "10px" }}>
@@ -123,7 +123,7 @@ export function UpdateSchedule() {
                         value={formData.date}
                         onChange={handleInputChange}
                         required
-                        style={{ width: "100%", padding: "8px" }}
+                        style={{ width: "100%", padding: "8px", color:"black" }}
                     />
                 </div>
                 <div style={{ marginBottom: "10px" }}>
@@ -134,7 +134,7 @@ export function UpdateSchedule() {
                         value={formData.venue}
                         onChange={handleInputChange}
                         required
-                        style={{ width: "100%", padding: "8px" }}
+                        style={{ width: "100%", padding: "8px", color:"black" }}
                     />
                 </div>
                 <button

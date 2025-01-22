@@ -122,8 +122,8 @@ export default function OrganizerProfile({ setSearchedList }) {
     navigate(`/tournamentById/${id}`)
   }
 
-  const updateSchedule = () =>{
-    navigate(`/updateTournament`);
+  const updateSchedule = (id) =>{
+    navigate(`/updateTournament/${id}`);
   }
 
 
@@ -178,17 +178,17 @@ export default function OrganizerProfile({ setSearchedList }) {
         <div className="d-flex justify-content-end mb-3">
           <button
             className="btn btn-primary"
-            onClick={() => navigate("/OrganizerTornament")}
+            onClick={() => navigate("/OrganizerTournament")}
           >
             View All
           </button>
         </div>
         {/* Horizontal Scrollable Section */}
-        <div className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
-          {tournament.map((tourna, index) => (
+        <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3" style={{ whiteSpace: "nowrap" }}>
+          {tournament.slice(0, 4).map((tourna, index) => (
             <div
-              key={index}
-              className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
+              key={index} className="card bg-dark text-white shadow-sm rounded d-inline-block p-3 mx-2"
+
               style={{ minWidth: "250px", display: "inline-block" }}
             >
               <h6 className="text-primary">{tourna.TournamentName}</h6>

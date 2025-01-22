@@ -5,8 +5,11 @@ import axios from "axios";
 import url from "../../URL/url.js";
 
 export const TournamentCreation = () => {
+    const id = useSelector((state) => state.User.user._id);
+
     const [formData, setFormData] = useState({
         TournamentName: "",
+        organizerId: id,
         organizer_name: "",
         schedule: [],
         teams: [],
@@ -14,7 +17,6 @@ export const TournamentCreation = () => {
         endDate: "",
     });
 
-    const id = useSelector((state) => state.User.user._id);
 
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -35,7 +37,7 @@ export const TournamentCreation = () => {
 
         try {
             console.log("Form data:", formData); // Check the structure of the data
-            const response = await axios.post(url.tournament.CREATE_TOURNAMENT, formData,id);
+            const response = await axios.post(url.tournament.CREATE_TOURNAMENT, formData);
 
             console.log("Full response:", response.data.insert); // Check the full response structure
 
