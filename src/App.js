@@ -20,11 +20,12 @@ import UpdateProfileForm from './Components/Player/UpdateProfileForm';
 
 
 // import Tournament from './Components/Tournaments/Tournament.js';
-import AllTournament from './Components/Tournaments/AllTournaments.js';
+import {UpdateSchedule} from './Components/Tournaments/UpdateSchedule.js';
 import ParticularTournament from "./Components/Tournaments/ParticularTournament.js";
 import UpcomingTournamentsCards from "./Components/Tournaments/UpcomingTournamentsCards";
 import { TeamRegister } from "./Components/Tournaments/TeamRegistration";
 import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
+import {OrganizerTournament} from "./Components/Tournaments/Tournament";
 
 
 
@@ -56,13 +57,15 @@ function App() {
       <Route path="/OrganizerMyProfile" element={<OrganizerMyProfile/>}/>
 
 
-      {/* <Route path='/allTournament' element={<AllTournament />} /> */}
+      <Route path='/updateTournament' element={<UpdateSchedule />} />
       <Route path="/tournamentById/:id" element={<ParticularTournament />} />
       <Route path="/UpcomingTournamentsCards" element={<UpcomingTournamentsCards/>}/>
       <Route path="/addTeam/:id" element={<TeamRegister/>}/>
+      <Route path="/createTournamentReq" element={<TournamentCreation/>}/>
+      <Route path="/OrganizerTournament" element={<OrganizerTournament/>}/>
+
 
       <Route path='/About' element={<About />} />
-      <Route path="/createTournamentReq" element={<TournamentCreation/>}/>
       <Route path='/ContactUs' element={<ContactUs />} />
     </Routes>
     {/* <Example/> */}

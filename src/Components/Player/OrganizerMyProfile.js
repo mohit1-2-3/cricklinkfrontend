@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import axios from "axios";
 import Swal from "sweetalert2";
 import url from "../../URL/url.js";
@@ -8,6 +10,7 @@ import url from "../../URL/url.js";
 export default function OrganizerMyProfile() {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const id = useSelector((state) => state.User.user._id);
   const [organizerProfile, setOrganizerProfile] = useState(null);
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export default function OrganizerMyProfile() {
       ></i>
       <div className="text-center">
         <h2 className="text-decoration-underline" style={{ fontSize: "2rem" }}>
-          Organizer Details
+          Organizer Detailssss
         </h2>
       </div>
       <div className="d-flex justify-content-around mt-5 flex-wrap">
@@ -47,7 +50,7 @@ export default function OrganizerMyProfile() {
           className="col-md-4 d-flex flex-column align-items-center"
         >
           <img
-            src={organizerProfile.profile_photo || "/assets/highlights/userIcon.png"}
+            src={organizerProfile.profile_photo || "/assets/userIcon.jpg"}
             width="80%"
             height="300rem"
             alt="Organizer"
@@ -72,14 +75,7 @@ export default function OrganizerMyProfile() {
           <form>
             <div id="user-box" style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: "1.3rem" }}>Role</label>
-              <input
-                type="text"
-                name="role"
-                value={organizerProfile.role || "N/A"}
-                readOnly
-                className="form-control"
-                style={{ fontSize: "1.2rem" }}
-              />
+              <input type="text"name="role"value={organizerProfile.role || "N/A"}readOnlyclassName="form-control"style={{ fontSize: "1.2rem" }}/>
             </div>
             <div id="user-box" style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: "1.3rem" }}>Contact</label>
@@ -89,53 +85,24 @@ export default function OrganizerMyProfile() {
                 value={organizerProfile.profile.contact || "N/A"}
                 readOnly
                 className="form-control"
-                style={{ fontSize: "1.2rem" }}
-              />
+                style={{ fontSize: "1.2rem" }}/>
             </div>
             <div id="user-box" style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: "1.3rem" }}>Location</label>
-              <input
-                type="text"
-                name="location"
-                value={organizerProfile.profile.location || "N/A"}
-                readOnly
-                className="form-control"
-                style={{ fontSize: "1.2rem" }}
-              />
+              <input type="text"name="location"value={organizerProfile.profile.location || "N/A"}readOnlyclassName="form-control"style={{ fontSize: "1.2rem" }}/>
             </div>
           </form>
 
           {/* Action Buttons */}
           <div className="mt-4">
             <button
-              style={{
-                backgroundColor: "#FFA500",
-                color: "white",
-                padding: "12px 24px",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-                fontSize: "1.2rem",
-                marginRight: "10px",
+              style={{backgroundColor: "#FFA500",color: "white",padding: "12px 24px",border: "none",borderRadius: "5px",cursor: "pointer",fontSize: "1.2rem",marginRight: "10px",
               }}
-              onClick={() =>
-                Swal.fire("Feature Unavailable", "Update feature is not implemented yet.", "info")
-              }
-            >
+              onClick={() => navigate(`/UpdateProfileForm/${id}`)}>
               Update Profile
             </button>
-            <button
-              style={{
-                backgroundColor: "#007BFF",
-                color: "white",
-                padding: "12px 24px",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-                fontSize: "1.2rem",
-              }}
-              onClick={() => navigate("/createTournamentReq")}
-            >
+            <button style={{backgroundColor: "#007BFF",color: "white",padding: "12px 24px",border: "none",borderRadius: "5px",cursor: "pointer",fontSize: "1.2rem"}}
+              onClick={() => navigate("/createTournamentReq")}>
               Create Tournament
             </button>
           </div>

@@ -35,7 +35,7 @@ let url = {
     tournament: {
         TOURNAMENT_LIST : "http://localhost:3000/Tournament/tournamentList",
         TOURNAMENT_BY_ID : "http://localhost:3000/Tournament",
-        // particular: 'http://localhost:3001/tournament/viewParticular',
+        ADD_MATCH : "http://localhost:3000/match",
         CREATE_TOURNAMENT: 'http://localhost:3000/Tournament/createTournamentReq'
     },
     match : {

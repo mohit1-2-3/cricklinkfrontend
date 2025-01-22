@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import axios from "axios";
 import url from "../../URL/url.js";
 
@@ -11,6 +13,8 @@ export const TournamentCreation = () => {
         startDate: "",
         endDate: "",
     });
+
+    const id = useSelector((state) => state.User.user._id);
 
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -31,7 +35,7 @@ export const TournamentCreation = () => {
 
         try {
             console.log("Form data:", formData); // Check the structure of the data
-            const response = await axios.post(url.tournament.CREATE_TOURNAMENT, formData);
+            const response = await axios.post(url.tournament.CREATE_TOURNAMENT, formData,id);
 
             console.log("Full response:", response.data.insert); // Check the full response structure
 
@@ -84,15 +88,15 @@ export const TournamentCreation = () => {
 
                 <div className="form-group mb-3">
                     <label htmlFor="organizer_name" className="form-label">
-                        Organizer Name:
+                        Venue:
                     </label>
                     <input
                         type="text"
-                        id="organizer_name"
-                        name="organizer_name"
+                        id="venue"
+                        name="venue"
                         className="form-control"
-                        placeholder="Enter organizer's name"
-                        value={formData.organizer_name}
+                        placeholder="Enter Venue"
+                        value={formData.venue}
                         onChange={handleInputChange}
                         required
                     />
@@ -137,6 +141,7 @@ export const TournamentCreation = () => {
                         name="entry_fees"
                         className="form-control"
                         value={formData.entry_fees}
+                        placeholder="Enetr entry Fees"
                         onChange={handleInputChange}
                         required
                     />

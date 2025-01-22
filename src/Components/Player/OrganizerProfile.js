@@ -108,7 +108,7 @@ export default function OrganizerProfile({ setSearchedList }) {
 
   const getTournamentbyId = async () => {
     try {
-      console.log("organixer id : state.id : " + id)
+      console.log("organizer id : state.id : " + id)
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
       console.log(response.data.data);
       setTourna(response.data.data);
@@ -121,6 +121,12 @@ export default function OrganizerProfile({ setSearchedList }) {
   const viewTourna = (id) => {
     navigate(`/tournamentById/${id}`)
   }
+
+  const updateSchedule = () =>{
+    navigate(`/updateTournament`);
+  }
+
+
   return (
     <>
       <nav
@@ -172,7 +178,7 @@ export default function OrganizerProfile({ setSearchedList }) {
         <div className="d-flex justify-content-end mb-3">
           <button
             className="btn btn-primary"
-            onClick={() => navigate("/UpcomingTournamentsCards")}
+            onClick={() => navigate("/OrganizerTornament")}
           >
             View All
           </button>
@@ -204,7 +210,7 @@ export default function OrganizerProfile({ setSearchedList }) {
                 </button>
                 <button
                   className="btn btn-warning btn-sm"
-                  onClick={() => viewTourna(tourna._id)}>
+                  onClick={() => updateSchedule()}>
                   Update Schedule
                 </button>
               </div>

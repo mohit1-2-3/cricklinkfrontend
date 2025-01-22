@@ -2,6 +2,8 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import url from "../../URL/url.js";
+import { useSelector } from "react-redux";
+
 
 // const ParticularTournament = () => {
 //     const params = useParams();
@@ -37,7 +39,7 @@ import url from "../../URL/url.js";
 //     //                     <div className="d-flex flex-column" style={{ boxShadow: "10px 10px 10px grey", height: "300px" }}>
 //     //                         <h2>Tournament Name : {tournament.TournamentName}</h2>
 //     //                         <p>Organizer Name : {tournament.organizerId?.name}</p>
-                            
+
 //     //                         <strong>Schedule : </strong>
 //     //                         <ul>{tournament.schedule?.map((data, index)=>(
 //     //                             <div key={index}>
@@ -77,7 +79,7 @@ import url from "../../URL/url.js";
 //                   <li className="list-group-item text-muted">No teams participated.</li>
 //                 )}
 //               </ul>
-      
+
 //               <h4 className="text-warning">Schedule</h4>
 //               <ul className="list-group">
 //                 {tournament.schedule?.length ? (
@@ -92,7 +94,7 @@ import url from "../../URL/url.js";
 //                   <li className="list-group-item text-muted">No matches scheduled.</li>
 //                 )}
 //               </ul>
-      
+
 //               <div className="mt-3 text-center">
 //                 <p><strong>Start:</strong> {new Date(tournament.startDate).toLocaleDateString()}</p>
 //                 <p><strong>End:</strong> {new Date(tournament.endDate).toLocaleDateString()}</p>
@@ -106,8 +108,8 @@ import url from "../../URL/url.js";
 //           </div>
 //         </div>
 //       );
-      
-      
+
+
 // }
 
 // export default ParticularTournament;
@@ -115,83 +117,108 @@ import url from "../../URL/url.js";
 
 
 const TournamentById = () => {
-    const params = useParams();
-    const { state } = useLocation();
-    console.log("id : "+params.id)
-    const [tournament, setTournament] = useState({});
-    const [tournamentTeams, setTournamentTeams] = useState([]);
+  const params = useParams();
+  const { state } = useLocation();
+  console.log("id : " + params.id);
+  const id = useSelector((state) => state.User.user._id);
+  const role = useSelector((state) => state.User.user.role);
+  console.log("user organizer id : "+ id +" nnnn "+role);
 
-    const navigate = useNavigate();
+  const [tournament, setTournament] = useState({});
+  const [tournamentTeams, setTournamentTeams] = useState([]);
 
-    useEffect(() => {
-        getTournamentbyId();
-    }, [params.id]);
+  const navigate = useNavigate();
 
-    const goToTeamRegistration = (id) => {
-        navigate(`/addTeam/${id}`)
-    }
-    const getTournamentbyId = async () => {
-        try {
-            let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${params.id}`);
-            console.log(response.data.data[0]);
-            setTournament(response.data.data[0]);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
+  useEffect(() => {
+    getTournamentbyId();
+  }, [params.id]);
 
-    return (
-        <div className="container mt-5">
-          <div className="card bg-dark text-white shadow-lg border-0 rounded">
-            <div className="card-header bg-dark text-center">
-              <h2>{tournament.TournamentName}</h2>
-              <p>Organized By : <h4>{tournament.organizerId?.name || "N/A"}</h4></p>
-            </div>
-            <div className="card-body">
-              <h4 className="text-warning">Teams</h4>
-              <ul className="list-group mb-4">
-                {tournament.teams?.length ? (
-                  tournament.teams.map((team, index) => (
-                    <li key={index} className="list-group-item bg-secondary text-white">
-                      🟢 {team.teamId?.teamName || "Unnamed Team"}
-                    </li>
-                  ))
-                ) : (
-                  <li className="list-group-item text-muted">No teams participated.</li>
-                )}
-              </ul>
+  const goToTeamRegistration = (id) => {
+    navigate(`/addTeam/${id}`)
+  }
+
+  const updateTournament = (id)=>{
       
-              <h4 className="text-warning">Schedule</h4>
-              <ul className="list-group">
-                {tournament.schedule?.length ? (
-                  tournament.schedule.map((match, index) => (
-                    <li key={index} className="list-group-item bg-secondary text-white">
-                      <strong>Match {index + 1}:</strong> {match.matchId?.team1?.teamName || "N/A"} vs{" "}
-                      {match.matchId?.team2?.teamName || "N/A"}<br />
-                      {new Date(match.matchId?.date).toLocaleDateString()} | {match.matchId?.venue || "N/A"}
-                    </li>
-                  ))
-                ) : (
-                  <li className="list-group-item text-muted">No matches scheduled.</li>
-                )}
-              </ul>
-      
-              <div className="mt-3 text-center">
-                <p><strong>Start:</strong> {new Date(tournament.startDate).toLocaleDateString()}</p>
-                <p><strong>End:</strong> {new Date(tournament.endDate).toLocaleDateString()}</p>
+  }
+  const getTournamentbyId = async () => {
+    try {
+      let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${params.id}`);
+      console.log(response.data.data[0]);
+      setTournament(response.data.data[0]);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
-                <button className="btn btn-warning" onClick={() => goToTeamRegistration(tournament._id)}>
+  return (
+    <div className="container mt-5">
+      <div className="card bg-dark text-white shadow-lg border-0 rounded">
+        <div className="card-header bg-dark text-center">
+          <h2>{tournament.TournamentName}</h2>
+          <p>Organized By : <h4>{tournament.organizerId?.name || "N/A"}</h4></p>
+        </div>
+        <div className="card-body">
+          <h4 className="text-warning">Teams</h4>
+          <ul className="list-group mb-4">
+            {tournament.teams?.length ? (
+              tournament.teams.map((team, index) => (
+                <li key={index} className="list-group-item bg-secondary text-white">
+                  🟢 {team.teamId?.teamName || "Unnamed Team"}
+                </li>
+              ))
+            ) : (
+              <li className="list-group-item text-muted">No teams participated.</li>
+            )}
+          </ul>
+
+          <h4 className="text-warning">Schedule</h4>
+          <ul className="list-group">
+            {tournament.schedule?.length ? (
+              tournament.schedule.map((match, index) => (
+                <li key={index} className="list-group-item bg-secondary text-white">
+                  <strong>Match {index + 1}:</strong> {match.matchId?.team1?.teamName || "N/A"} vs{" "}
+                  {match.matchId?.team2?.teamName || "N/A"}<br />
+                  {new Date(match.matchId?.date).toLocaleDateString()} | {match.matchId?.venue || "N/A"}
+                </li>
+              ))
+            ) : (
+              <li className="list-group-item text-muted">No matches scheduled.</li>
+            )}
+          </ul>
+
+          <div className="mt-3 text-center">
+          <p><strong></strong> {tournament.venue}</p>
+          <p><strong>Entry Fees:</strong> {tournament.entry_fees}</p>
+
+          <p><strong>Start:</strong> {new Date(tournament.startDate).toLocaleDateString()}</p>
+          <p><strong>End:</strong> {new Date(tournament.endDate).toLocaleDateString()}</p>
+
+          
+            <div className=" justify-content-between mt-2">
+
+            {id == tournament.organizerId ? (
+              <button
+                className="btn btn-info"
+                onClick={() => updateTournament(tournament._id)}
+              >
+                Update Tournament
+              </button>
+            ) : (
+            <button className="btn btn-warning" onClick={() => goToTeamRegistration(tournament._id)}>
                   Register for Tournament
                 </button>
+            )
+          }
+          </div>
                 <button className="btn btn-primary">{tournament.status}</button>
               </div>
-            </div>
-          </div>
         </div>
-      );
-      
-      
+      </div>
+      </div>
+  );
+
+
 }
 
 export default TournamentById;
