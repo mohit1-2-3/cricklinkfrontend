@@ -21,7 +21,7 @@ let url = {
         player: {
             signup: 'http://localhost:3001/user/signup',
             signin: 'http://localhost:3001/user/signIn', 
-            sendOTP: "http://localhost:5000/api/user/sendOTP"
+            sendOTP: "http://localhost:3001/user/sendOTP"
         },
    
     

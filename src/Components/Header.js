@@ -23,7 +23,7 @@ export default function Header({ setSearchedList }) {
                 <div className="offcanvas offcanvas-start p-5 text-bg-dark" tabIndex="-1" id="leftSidebar" aria-labelledby="leftSidebarLabel">
                     <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     <div className="offcanvas-header ps-5">
-                        {/* <img src='assets/logo.png' id='logo' alt='logo' /> */}
+                        <img src='assets/logo.png' id='logo' alt='logo' />
                         <h5 className="offcanvas-title" id="leftSidebarLabel"></h5>
                     </div>
                     <div className="offcanvas-body ps-5">

@@ -2,9 +2,14 @@
 
 import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+
 import TeamsPage from "../Team/TeamPage";
+
+import { signOut } from "../../redux-config/UserSlice";
+
+
 
 function LeftSidebar() {
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
@@ -12,6 +17,7 @@ function LeftSidebar() {
   // *****************************************
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const player = useSelector((state) => state.User.user);
 
   // ******************************************
@@ -156,8 +162,8 @@ function LeftSidebar() {
         className="btn btn-danger w-75 mt-4"
         onClick={() => {
           console.log("Logging out...");
-          navigate("/");
-          // Add logout logic here
+          dispatch(signOut()); // Clear Redux state
+          navigate("/"); // Navigate to home page
         }}
       >
         Logout
@@ -170,103 +176,18 @@ function LeftSidebar() {
   );
 }
 
-// function RightSidebar({ navigate }) {
-//   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-//   const currentUser = sessionStorage.getItem("currentUser");
-//   return (
-//     <div
-//       className="offcanvas offcanvas-end pt-5 text-bg-dark"
-//       tabIndex="-1"
-//       id="rightSidebar"
-//       aria-labelledby="rightSidebarLabel"
-//     >
-//       <button
-//         type="button"
-//         className="ms-5 btn-close btn-close-white"
-//         data-bs-dismiss="offcanvas"
-//         aria-label="Close"
-//       ></button>
-//       <div className="offcanvas-header mt-5">
-//         <div className="container">
-//           <div
-//             id="imagebox"
-//             className="rounded-5 border ps-5 pe-5 pt-3 pb-3 w-100"
-//           >
-//             <div
-//               id="imgg"
-//               style={{ height: "140px" }}
-//               className="d-flex flex-column gap-3 align-items-center"
-//             >
-//               {isLoggedIn ? (
-//                 <>
-//                   <img
-//                     src="11.jpg"
-//                     width="100vw"
-//                     className="img-fluid rounded-circle border-dark"
-//                     alt="Avatar"
-//                   />
-//                   <h5>Cricket Champion Hub</h5>
-//                   <h6>{currentUser}</h6>
-//                 </>
-//               ) : (
-//                 <>
-//                   {/* <img src="https://t4.ftcdn.net/jpg/00/65/77/27/240_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" width='100vw' className="img-fluid rounded-circle border-dark" alt="Avatar" />
-//                                     <h5>Guest</h5>
-//                                     <button type="button" onClick={() => navigate('/signIn')} className="btn btn-primary">Log In</button> */}
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       {isLoggedIn && (
-//         <div className="offcanvas-body mt-5">
-//           <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-//             <li className="nav-item">
-//               <a className="nav-link active" href="#">
-//                 My Profile
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 About
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 Contact Us
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 LogOut
-//               </a>
-//             </li>
-//           </ul>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
+//==============right side bar=====================
 
-export default function Header({ setSearchedList }) {
+//===============================================
+  export default function Header({ setSearchedList }) {
   let navigate = useNavigate();
 
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
   const id = useSelector((state) => state.User.user._id);
 
-  // let handleProfile = () => {
-  //   if (sessionStorage.getItem("isLoggedIn")) {
-  //     let user = sessionStorage.getItem("currentUser");
-  //     user === "player"
-  //       ? navigate("/playerProfile")
-  //       : user === "organizer"
-  //       ? navigate("/organizerProfile")
-  //       : navigate("/adminProfile");
-  //   } else {
-  //     navigate("/signIn");
-  //   }
-  // };
+  //=============handle file in notepad=====================
+
+  //==================================================
 
   return (
     <>

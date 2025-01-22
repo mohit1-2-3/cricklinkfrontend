@@ -26,7 +26,11 @@ export default function SignUpForm() {
     });
 
     useEffect(() => {
-        axios.get(url?.category?.all)
+
+//         axios.get(url?.category?.all)
+
+        axios.get(url.category?.all)
+
             .then(response => {
                 setCategories(response.data.data);
             })
