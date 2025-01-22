@@ -8,7 +8,7 @@ export default ({ filteredData }) => {
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user/viewallplayers")
+      .get("http://localhost:3000/user/playerList")
       .then((response) => {
         console.log("response.data:", response.data);
         setPlayerList(response.data.players);
@@ -27,7 +27,7 @@ export default ({ filteredData }) => {
         <h2>PLAYERS</h2>
       </div>
       <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3">
-        {filteredData.slice(0, 10).map((player, index) => {
+        {/* {filteredData.slice(0, 10).map((player, index) => {
           const id = player._id;
           console.log(id);
 
@@ -73,7 +73,7 @@ export default ({ filteredData }) => {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
     </>
   );

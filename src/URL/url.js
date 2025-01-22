@@ -9,8 +9,8 @@ let url = {
     //     , all: 'http://localhost:3000/organizer/viewAll'
         Organizer_profile: 'http://localhost:3000/user/detail'
     },
-    player: {
-        all: 'http://localhost:3000/user/viewallplayers'
+     player: {
+        all: 'http://localhost:3000/user/playerList'
         , viewcard: 'http://localhost:3000/user/profile/:id'
         , signin: 'http://localhost:3001/user/signin'
         , sendRequest: 'http://localhost:3000/player/sendRequest'
@@ -19,8 +19,9 @@ let url = {
     },
      
         player: {
-
-            //    signup: 'http://localhost:3000/user/sigup',
+            all: 'http://localhost:3000/user/playerList',
+            viewcard: 'http://localhost:3000/user/profile/:id',
+        //  signup: 'http://localhost:3000/user/sigup',
             signup: 'http://localhost:3000/user/signup',
             signin: 'http://localhost:3000/user/signin', 
             sendOTP: "http://localhost:5000/api/user/sendOTP"

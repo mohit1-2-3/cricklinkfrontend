@@ -202,9 +202,6 @@ export default function UpdateProfileForm({ closeForm }) {
                              }}
                              ></button>
 
-                            
-                        
-                        
                         </div>
                         <form onSubmit={handleFormSubmit} className="modal-body">
                             <div className="mb-3">

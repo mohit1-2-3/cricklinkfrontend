@@ -47,7 +47,7 @@ export default function OrganizerMyProfile() {
           className="col-md-4 d-flex flex-column align-items-center"
         >
           <img
-            src={organizerProfile.profile_photo || "/assets/userIcon.png"}
+            src={organizerProfile.profile_photo || "/assets/highlights/userIcon.png"}
             width="80%"
             height="300rem"
             alt="Organizer"
@@ -86,7 +86,7 @@ export default function OrganizerMyProfile() {
               <input
                 type="text"
                 name="contact"
-                value={organizerProfile.contect || "N/A"}
+                value={organizerProfile.profile.contact || "N/A"}
                 readOnly
                 className="form-control"
                 style={{ fontSize: "1.2rem" }}
@@ -97,7 +97,7 @@ export default function OrganizerMyProfile() {
               <input
                 type="text"
                 name="location"
-                value={organizerProfile.location || "N/A"}
+                value={organizerProfile.profile.location || "N/A"}
                 readOnly
                 className="form-control"
                 style={{ fontSize: "1.2rem" }}

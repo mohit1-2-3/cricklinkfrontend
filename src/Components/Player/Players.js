@@ -26,8 +26,8 @@ export default () => {
     useEffect(() => {
         axios.get(url.player.all)
             .then(response => {
-                console.log('response.data.data', response.data.data);
-                setPlayerList(response.data.data);
+                console.log('response.data.data', response.data);
+                setPlayerList(response.data);
             }).catch(err => {
                 console.log(err);
             })
@@ -65,7 +65,7 @@ export default () => {
         axios.post(url.player.search, { searchBy: e.target.name, data: e.target.value })
             .then(response => {
                 console.log(response);
-                let flattenedArray = response.data.data;
+                let flattenedArray = response.data.data.user;
                 console.log('flattenedArray', flattenedArray);
                 setFilterData(flattenedArray.flat()); // No need to spread the array if it's already flattened
 
