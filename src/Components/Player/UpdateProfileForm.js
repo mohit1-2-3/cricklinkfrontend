@@ -167,7 +167,7 @@ export default function UpdateProfileForm({ closeForm }) {
 
         try {
             // Correct URL ke saath request bhejiye
-            const res = await fetch(`http://localhost:3001/user/updateProfile/${id}`, {
+            const res = await fetch(`http://localhost:3000/user/updateProfile/${id}`, {
                 method: "PUT",
                 body: form,
             });
@@ -202,9 +202,6 @@ export default function UpdateProfileForm({ closeForm }) {
                              }}
                              ></button>
 
-                            
-                        
-                        
                         </div>
                         <form onSubmit={handleFormSubmit} className="modal-body">
                             <div className="mb-3">

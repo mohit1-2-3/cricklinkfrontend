@@ -35,7 +35,7 @@ export default function SignIn() {
                 navigate('/PlayerMyProfile');
             }
             else if(response.data.user.role=="organizer"){
-                      console.log("nothing is here");
+                      console.log("sign successful");
                       navigate('/OrganizerProfile');
             }
             

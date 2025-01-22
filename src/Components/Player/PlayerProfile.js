@@ -146,6 +146,8 @@ export default function PlayerProfile() {
     console.log(state.playerId);
     console.log(state.id);
     axios
+
+//       .get(`http://localhost:3000/user/profile/${state.id}`)
       .get(`http://localhost:3001/user/profile/${state.id}`)
       .then((response) => {
         setPlayerData(response.data);

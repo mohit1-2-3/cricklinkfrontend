@@ -13,13 +13,20 @@ import ForgotPassword from './Components/forgotPassword';
 
 import PlayerProfile from './Components/Player/PlayerProfile.js';
 import OrganizerProfile from './Components/Player/OrganizerProfile.js';
+import OrganizerMyProfile from './Components/Player/OrganizerMyProfile';
 import Players from './Components/Player/Players.js';
 import PlayerMyProfile from './Components/Player/PlayerMyProfile';
 import UpdateProfileForm from './Components/Player/UpdateProfileForm';
 
 
-import Tournament from './Components/Tournaments/Tournament.js';
+// import Tournament from './Components/Tournaments/Tournament.js';
 import AllTournament from './Components/Tournaments/AllTournaments.js';
+import ParticularTournament from "./Components/Tournaments/ParticularTournament.js";
+import UpcomingTournamentsCards from "./Components/Tournaments/UpcomingTournamentsCards";
+import { TeamRegister } from "./Components/Tournaments/TeamRegistration";
+import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
+
+
 
 import Teams from './Components/Team/team.js';
 import TeamDetail from './Components/Team/TeamDetails.js';
@@ -42,16 +49,21 @@ function App() {
       {/* <Route path='/teamDetails' element={<TeamDetail />} /> */}
       <Route path='/registerTeam' element={<RegistrationForm />} />
 
-      <Route path='/tournament' element={<Tournament />} />
-      <Route path='/allTournament' element={<AllTournament />} />
-
       <Route path='/PlayerProfile' element={<PlayerProfile />} />
       <Route path='/players' element={<Players />} />
       <Route path="/playerMyProfile" element={<PlayerMyProfile />} />
       <Route path="/UpdateProfileForm/:id" element={<UpdateProfileForm />} />
       <Route path='/OrganizerProfile' element={<OrganizerProfile />} />
-      <Route path='/About' element={<About />} />
+      <Route path="/OrganizerMyProfile" element={<OrganizerMyProfile/>}/>
 
+
+      {/* <Route path='/allTournament' element={<AllTournament />} /> */}
+      <Route path="/tournamentById/:id" element={<ParticularTournament />} />
+      <Route path="/UpcomingTournamentsCards" element={<UpcomingTournamentsCards/>}/>
+      <Route path="/addTeam/:id" element={<TeamRegister/>}/>
+
+      <Route path='/About' element={<About />} />
+      <Route path="/createTournamentReq" element={<TournamentCreation/>}/>
       <Route path='/ContactUs' element={<ContactUs />} />
 
       <Route path="/Team/:id" element={<TeamDetail/>} ></Route>

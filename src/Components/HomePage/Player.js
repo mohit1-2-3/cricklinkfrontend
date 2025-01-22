@@ -8,10 +8,10 @@ export default ({ filteredData }) => {
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user/viewallplayers")
+      .get("http://localhost:3000/user/playerList")
       .then((response) => {
         console.log("response.data:", response.data);
-        setPlayerList(response.data.players);
+        setPlayerList(response.data.user);
       })
       .catch((err) => {
         console.error("Error fetching players:", err);
