@@ -60,6 +60,7 @@ import Footer from '../Footer.js';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import url from "../../URL/url.js";
+import Teams from "./Teams.js";
 
 export default function Home() {
     let [searchedList, setSearchedList] = useState('');
@@ -95,6 +96,8 @@ export default function Home() {
                             <Banner />
                             <div id="sectionLine"></div>
                             <Players filteredData={[]} />
+                            <div id="sectionLine"></div>
+                            <Teams/>
                             <div id="sectionLine"></div>
                             <UpcomingEvent />
                             <div id="sectionLine"></div>

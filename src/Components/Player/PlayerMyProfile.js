@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import TeamsPage from "../Team/TeamPage";
 
 function LeftSidebar() {
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
@@ -40,6 +41,8 @@ function LeftSidebar() {
   console.log("=================<<<<<<<<<>>>>>>==================");
 
   return (
+    <>
+   
     <div
       className="offcanvas offcanvas-start p-5 text-bg-dark"
       tabIndex="-1"
@@ -162,6 +165,8 @@ function LeftSidebar() {
     </div>
 
     </div>
+    
+    </>
   );
 }
 
@@ -264,6 +269,7 @@ export default function Header({ setSearchedList }) {
   // };
 
   return (
+    <>
     <nav
       className="navbar navbar-dark sticky-top p-3"
       style={{ backgroundColor: "#090129" }}
@@ -309,6 +315,8 @@ export default function Header({ setSearchedList }) {
         </div>
       </div>
     </nav>
+     <TeamsPage/>
+    </>
   );
 }
 
