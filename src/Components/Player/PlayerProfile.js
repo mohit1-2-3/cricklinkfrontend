@@ -55,7 +55,7 @@
 //           <div>
 //             <p className="mt-3">
 //               <h5>Skills:</h5>
-              
+
 //               <label style={{ color: "white" }}>
 //     {playerData.profile.skills || "N/A"}
 // </label>
@@ -89,11 +89,11 @@
 //             </div>
 //             {/* ==================================== */}
 
-            
+
 
 //             {/* ======================================== */}
 //           </form>
-               
+
 //           <button
 //     style={{
 //         backgroundColor: '#4CAF50', // Green button
@@ -147,8 +147,8 @@ export default function PlayerProfile() {
     console.log(state.id);
     axios
 
-//       .get(`http://localhost:3000/user/profile/${state.id}`)
-      .get(`http://localhost:3001/user/profile/${state.id}`)
+      //       .get(`http://localhost:3000/user/profile/${state.id}`)
+      .get(`http://localhost:3000/user/profile/${state.id}`)
       .then((response) => {
         setPlayerData(response.data);
       })
@@ -178,7 +178,7 @@ export default function PlayerProfile() {
           className="col-md-4 d-flex flex-column align-items-center"
         >
           <img
-            src={playerData.profile_photo||"/user.webp"}
+            src={playerData.profile_photo || "/user.webp"}
             width="80%"
             height="300rem"
             alt="Player"
@@ -189,13 +189,9 @@ export default function PlayerProfile() {
           <div>
             <p className="mt-3">
 
-//               <h5 >Skills :&nbsp;&nbsp;{ playerData?.profile?.skills }</h5>
+              {/* //       <h5 >Skills :&nbsp;&nbsp;{ playerData?.profile?.skills }</h5> */}
 
-              <h5>Skills:</h5>
-              <label style={{ color: "white" }}>
-                {playerData.profile.skills || "N/A"}
-              </label>
-
+              <h2 style={{ color: "white"}}><strong>Skills : </strong>{playerData.profile.skills || "N/A"}</h2>
             </p>
           </div>
         </div>

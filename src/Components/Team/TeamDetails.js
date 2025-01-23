@@ -10,8 +10,9 @@ function TeamDetailsPage() {
   useEffect(() => {
     const fetchTeamDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/Team/${params.id}`);
-        setTeam(response.data.Team);
+        const response = await axios.get(`http://localhost:3000/Team/${params.id}`);
+        console.log(response.data?.Team);
+        setTeam(response.data?.Team);
       } catch (err) {
         console.error("Error fetching team details:", err);
       }
@@ -27,7 +28,7 @@ fetchTeamDetails();
       console.error("Invalid ID detected"); // Agar ID missing hai to error dikhao
       return;
     }
-    navigate(`/user/${id}`);
+    navigate(`/user/profile/${id}`);
   };
  
   return (<>

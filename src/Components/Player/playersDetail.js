@@ -12,7 +12,7 @@ function PlayersDetail() {
     const fetchPlayerDetails = async () => {
       try {
         // Fetch data from user collection
-        const response = await axios.get(`http://localhost:3001/user/${params.id}`);
+        const response = await axios.get(`http://localhost:3000/user/${params.id}`);
         setPlayer(response.data.user); // Ensure the correct key
       } catch (err) {
         console.error("Error fetching player details:", err);

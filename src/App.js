@@ -18,6 +18,8 @@ import Players from './Components/Player/Players.js';
 import PlayerMyProfile from './Components/Player/PlayerMyProfile';
 import UpdateProfileForm from './Components/Player/UpdateProfileForm';
 
+import {PlayerNotifications} from "./Components/Player/PlayerNotifications.js";
+
 
 // import Tournament from './Components/Tournaments/Tournament.js';
 import {UpdateSchedule} from './Components/Tournaments/UpdateSchedule.js';
@@ -52,10 +54,13 @@ function App() {
 
       <Route path='/PlayerProfile' element={<PlayerProfile />} />
       <Route path='/players' element={<Players />} />
-      <Route path="/playerMyProfile" element={<PlayerMyProfile />} />
+      <Route path="/PlayerMyProfile" element={<PlayerMyProfile />} />
       <Route path="/UpdateProfileForm/:id" element={<UpdateProfileForm />} />
       <Route path='/OrganizerProfile' element={<OrganizerProfile />} />
       <Route path="/OrganizerMyProfile" element={<OrganizerMyProfile/>}/>
+
+
+      <Route path="/AllNotifications" element={<PlayerNotifications/>}/>
 
 
       <Route path='/updateTournament/:id' element={<UpdateSchedule />} />
@@ -66,7 +71,7 @@ function App() {
       <Route path="/OrganizerTournament" element={<OrganizerTournament/>}/>
 
 
-      <Route path='/About' element={<About />} />
+      <Route path='/About' element={<About />} /> //teamDetails
       <Route path='/ContactUs' element={<ContactUs />} />
 
       <Route path="/Team/:id" element={<TeamDetail/>} ></Route>

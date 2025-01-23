@@ -31,7 +31,7 @@ export default function SignIn() {
             //dispatch(setUser(response.data));
              toast.success('Sign In Successful');
            setTimeout(() => {
-            if(response.data.user.role=="player"){
+            if(response.data.user.role=="player" || response.data.user.role=="captain"){
                 navigate('/PlayerMyProfile');
             }
             else if(response.data.user.role=="organizer"){

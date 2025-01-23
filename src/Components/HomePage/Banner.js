@@ -9,28 +9,28 @@ export default function Banner() {
     const sliderItems = [
         {
             imgSrc: "https://img.freepik.com/premium-photo/photo-cricket-player-stadium-ready-icc-world-cup-2023-match-generative-ai_742418-6168.jpg?w=740",
-            author: "CODE_ELITES",
+            author: "CODE_ELITERS",
             title: "STREET CRICKET",
             topic: "TITANS",
             description: "Your passion decides the player, your effort decides the champion....",
         },
         {
             imgSrc: "https://spin.axiomthemes.com/wp-content/uploads/2023/09/post12-copyright.jpg",
-            author: "CODE_ELITES",
+            author: "CODE_ELITERS",
             title: "STREET CRICKET",
             topic: "TITANS",
             description: "Your passion decides the player, your effort decides the champion....",
         },
         {
             imgSrc: "https://spin.axiomthemes.com/wp-content/uploads/2023/09/post2-copyright-1536x1178.jpg",
-            author: "CODE_ELITES",
+            author: "CODE_ELITERS",
             title: "STREET CRICKET",
             topic: "TITANS",
             description: "Your passion decides the player, your effort decides the champion....",
         },
         {
             imgSrc: "https://spin.axiomthemes.com/wp-content/uploads/2023/09/post8-copyright-1290x725.jpg",
-            author: "CODE_ELITES",
+            author: "CODE_ELITERS",
             title: "STREET CRICKET",
             topic: "TITANS",
             description: "Your passion decides the player, your effort decides the champion...",

@@ -30,6 +30,7 @@ function LeftSidebar() {
   const skill = useSelector((state) => state.User.user.profile.skills);
   const location = useSelector((state) => state.User.user.profile.location);
   const id = useSelector((state) => state.User.user._id);
+  const role = useSelector((state) =>state.User.user.role)
 
   const profile_photo = useSelector((state) => state.User.user.profile_photo);
   console.log("=================<<<<<<<<<>>>>>>==================");
@@ -38,6 +39,7 @@ function LeftSidebar() {
   console.log(contact);
   console.log(email);
   console.log(player);
+  console.log(role)
 
   console.log(experience);
   console.log(skill);
@@ -224,6 +226,7 @@ function LeftSidebar() {
           <i
             className="btn fa-solid fa-bell fa-xl"
             style={{ color: "#ffffff", marginTop: "10px" }}
+            onClick={()=>navigate(`/AllNotifications`)}
           ></i>
 
           <button

@@ -9,23 +9,25 @@ let url = {
     //     , all: 'http://localhost:3000/organizer/viewAll'
         Organizer_profile: 'http://localhost:3000/user/detail'
     },
-     player: {
-        all: 'http://localhost:3000/user/playerList'
-        , viewcard: 'http://localhost:3000/user/profile/:id'
-        , signin: 'http://localhost:3001/user/signin'
-        , sendRequest: 'http://localhost:3000/player/sendRequest'
-        , search: 'http://localhost:3000/player/search'
-        , searchByCategory: 'http://localhost:3000/player/searchByCategory'
-    },
+    //  player: {
+    //     all: 'http://localhost:3000/user/playerList'
+    //     , viewcard: 'http://localhost:3000/user/profile/:userId'
+    //     , signin: 'http://localhost:3001/user/signin'
+    //     , sendRequest: 'http://localhost:3000/player/sendRequest'
+    //     , search: 'http://localhost:3000/player/search'
+    //     , searchByCategory: 'http://localhost:3000/player/searchByCategory'
+    // },
      
         player: {
 
             all: 'http://localhost:3000/user/playerList',
-            viewcard: 'http://localhost:3000/user/profile/:id',
+            viewcard: 'http://localhost:3000/user/profile/:userId',
         //  signup: 'http://localhost:3000/user/sigup',
             signup: 'http://localhost:3000/user/signup',
+
             signin: 'http://localhost:3000/user/signin', 
             sendOTP: "http://localhost:5000/api/user/sendOTP",
+            sendRequest: 'http://localhost:3000/player/sendRequest'
 
             // signup: 'http://localhost:3001/user/signUp',
             // signin: 'http://localhost:3001/user/signIn', 

@@ -22,7 +22,7 @@ export default function SignUpForm() {
         email: '',
         password: '',
         contactNumber: '',
-        user: '',
+        role: '',
     });
 
     useEffect(() => {
@@ -101,9 +101,10 @@ export default function SignUpForm() {
         console.log("Hellooooooo.......")
         console.log('HRitik>>> data:', updatedFormData);
         const response = await axios.post(url.player.signup, updatedFormData);
-        console.log('API Response:', response.data);
+        console.responsee('API Response:', response.data);
         handleAlert('success', 'Successfully signed up');
-        if(response.data.user.role=="player"){
+        
+        if(response.data.user.role=="Player" || response.data.user.role=="Captain"){
             navigate('/PlayerMyProfile');
         }
         else if(response.data.user.role=="organizer"){
@@ -174,6 +175,7 @@ export default function SignUpForm() {
                                                         <option style={{ color: '#000000' }} selected>Select Option</option>
                                                         <option style={{ color: '#000000' }} value="player">Player</option>
                                                         <option style={{ color: '#000000' }} value="organizer">Organizer</option>
+                                                        {/* <option style={{ color: '#000000' }} value="captain">Captain</option> */}
                                                     </select>
                                                 </div>
                                                 <button className="btn btn-outline-primary mt-3" onClick={handleSubmit}>Submit</button>

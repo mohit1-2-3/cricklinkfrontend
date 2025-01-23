@@ -98,13 +98,14 @@ export default function Home() {
                             <Players filteredData={[]} />
                             <div id="sectionLine"></div>
 
-
+                            <h3 className="text-center mb-4"
+                                style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>Teams</h3>
                             <Teams />
                             <div id="sectionLine"></div>
 
 
-                        <h3 className="text-center mb-4"
-                        style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>Upcoming Events</h3>
+                            <h3 className="text-center mb-4"
+                                style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>Upcoming Events</h3>
                             <UpcomingEvent />
                             <div id="sectionLine"></div>
 

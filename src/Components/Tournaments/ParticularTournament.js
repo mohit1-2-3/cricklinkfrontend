@@ -117,7 +117,7 @@ import { useSelector } from "react-redux";
 
 
 const TournamentById = () => {
-  const params = useParams();
+  const params = useParams();   // tournament id
   const { state } = useLocation();
   console.log("id : " + params.id);
   const id = useSelector((state) => state.User.user._id);
@@ -131,7 +131,7 @@ const TournamentById = () => {
 
   useEffect(() => {
     getTournamentbyId();
-  }, [params.id]);
+  }, []);
 
   const goToTeamRegistration = (id) => {
     navigate(`/addTeam/${id}`)
@@ -145,6 +145,8 @@ const TournamentById = () => {
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${params.id}`);
       console.log(response.data.data[0]);
       setTournament(response.data.data[0]);
+      console.log("Organizer id 2 : " + tournament.organizerId)
+      console.log("selector id : " + id);
     }
     catch (error) {
       console.log(error);
@@ -187,7 +189,7 @@ const TournamentById = () => {
             )}
           </ul>
 
-          <div className="mt-3 text-center">
+          <div className="mt-3 text-center" style={{fontSize: "1rem" }}>
           <p><strong></strong> {tournament.venue}</p>
           <p><strong>Entry Fees:</strong> {tournament.entry_fees}</p>
 
@@ -197,7 +199,7 @@ const TournamentById = () => {
           
             <div className=" justify-content-between mt-2">
 
-            {id === tournament.organizerId ? (
+            {id == tournament.organizerId ? (
               <button
                 className="btn btn-info"
                 onClick={() => updateTournament(tournament._id)}

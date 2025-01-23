@@ -66,7 +66,7 @@ export default () => {
             <div className="bakround">
                 <div className="row">
                     <div className="text-center text-white">
-                        <h1>Contact Us</h1>
+                        <h1 style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>Contact Us</h1>
                         <div className="row ">
                             <div className="col-md-5 me-5 mt-5 p-5 " id="question">
                                 <div >
