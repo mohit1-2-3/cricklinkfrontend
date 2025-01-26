@@ -11,7 +11,8 @@ function TeamDetailsPage() {
     const fetchTeamDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/Team/${params.id}`);
-        setTeam(response.data.Team);
+        console.log(response.data?.Team);
+        setTeam(response.data?.Team);
       } catch (err) {
         console.error("Error fetching team details:", err);
       }
@@ -27,35 +28,25 @@ fetchTeamDetails();
       console.error("Invalid ID detected"); // Agar ID missing hai to error dikhao
       return;
     }
-    navigate(`/user/${id}`);
+    navigate(`/user/profile/${id}`);
   };
  
   return (<>
     <div className="container mt-5 p-2" >
+    <h3 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>Team Players</h3>
+
       <div className="row">
       {team?. players?.map((player,index)=>(
          <div key={index} className="col-md-3 p-3 ">
            <div className="col md-6 d-flex flex-column  " style={{height:"370px", boxShadow:"10px 10px 10px gray",borderRadius:"10px"}}>
             
-     <img
-                  src={player.profile_photo || "/user.webp"}
-                  alt={`${player.name}'s profile`}
-                  style={{
-                    width: "100%",
-                    height: "200px", 
-                    objectFit: "cover",
-                    borderRadius: "10px",
-                    
-                  }}
-                />
-                <div style={{fontSize:"15px",
-                    fontWeight:"bold",
-                    
-                }}>
-                <p >Name : {player.name}</p>
+     <img src={player.profile_photo || "/user.webp"} alt={`${player.name}'s profile`}
+          style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "10px"}}/>
+                <div style={{fontSize:"15px", fontWeight:"bold"}}>
+                <p>Name : {player.name}</p>
                   <p>Skill : {player.profile?.skills}</p>
                   <p>Experience : {player.profile?.experience}</p>
-                  {/* <p>Location: {player.profile?.location}</p> */}
+                  <p>Location: {player.profile?.location}</p>
                 
                 </div>
                 

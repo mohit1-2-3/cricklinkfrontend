@@ -1,16 +1,23 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import axios from "axios";
 import url from "../../URL/url.js";
 
 export const TournamentCreation = () => {
+    const id = useSelector((state) => state.User.user._id);
+
     const [formData, setFormData] = useState({
         TournamentName: "",
+        organizerId: id,
         organizer_name: "",
         schedule: [],
         teams: [],
         startDate: "",
         endDate: "",
+        entry_fees:""
     });
+
 
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -70,31 +77,15 @@ export const TournamentCreation = () => {
                     <label htmlFor="TournamentName" className="form-label">
                         Tournament Name:
                     </label>
-                    <input
-                        type="text"
-                        id="TournamentName"
-                        name="TournamentName"
-                        className="form-control"
-                        placeholder="Enter tournament name"
-                        value={formData.TournamentName}
-                        onChange={handleInputChange}
-                        required
+                    <input type="text" id="TournamentName" name="TournamentName" className="form-control" placeholder="Enter tournament name" value={formData.TournamentName} onChange={handleInputChange} required
                     />
                 </div>
 
                 <div className="form-group mb-3">
                     <label htmlFor="organizer_name" className="form-label">
-                        Organizer Name:
+                        Venue:
                     </label>
-                    <input
-                        type="text"
-                        id="organizer_name"
-                        name="organizer_name"
-                        className="form-control"
-                        placeholder="Enter organizer's name"
-                        value={formData.organizer_name}
-                        onChange={handleInputChange}
-                        required
+                    <input type="text" id="venue" name="venue" className="form-control" placeholder="Enter Venue" value={formData.venue} onChange={handleInputChange} required
                     />
                 </div>
 
@@ -102,14 +93,7 @@ export const TournamentCreation = () => {
                     <label htmlFor="startDate" className="form-label">
                         Start Date:
                     </label>
-                    <input
-                        type="date"
-                        id="startDate"
-                        name="startDate"
-                        className="form-control"
-                        value={formData.startDate}
-                        onChange={handleInputChange}
-                        required
+                    <input type="date" id="startDate" name="startDate" className="form-control" value={formData.startDate} onChange={handleInputChange} required
                     />
                 </div>
 
@@ -117,29 +101,14 @@ export const TournamentCreation = () => {
                     <label htmlFor="endDate" className="form-label">
                         End Date:
                     </label>
-                    <input
-                        type="date"
-                        id="endDate"
-                        name="endDate"
-                        className="form-control"
-                        value={formData.endDate}
-                        onChange={handleInputChange}
-                        required
+                    <input type="date" id="endDate" name="endDate" className="form-control" value={formData.endDate} onChange={handleInputChange} required
                     />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="endDate" className="form-label">
                         Entry Fees :
                     </label>
-                    <input
-                        type="text"
-                        id="entry_fees"
-                        name="entry_fees"
-                        className="form-control"
-                        value={formData.entry_fees}
-                        onChange={handleInputChange}
-                        required
-                    />
+                    <input type="text" id="entry_fees" name="entry_fees" className="form-control" value={formData.entry_fees} placeholder="Enetr entry Fees" onChange={handleInputChange}/>
                 </div>
 
                 <button type="submit" className="btn btn-success w-100 mt-4">

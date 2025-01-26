@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setUser } from '../redux-config/UserSlice'; 
 import url from '../URL/url.js';
+import GoogleSign from './googleSign.js';
+
 import '../App.css';
 
 export default function SignIn() {
@@ -31,7 +33,7 @@ export default function SignIn() {
             //dispatch(setUser(response.data));
              toast.success('Sign In Successful');
            setTimeout(() => {
-            if(response.data.user.role=="player"){
+            if(response.data.user.role=="player" || response.data.user.role=="captain"){
                 navigate('/PlayerMyProfile');
             }
             else if(response.data.user.role=="organizer"){
@@ -64,7 +66,9 @@ export default function SignIn() {
                             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                                 <p className="lead fw-normal ms-5 me-3">Sign In with</p>
                                 <button type="button" className="btn btn-primary btn-floating mx-1">
-                                    <i className="fa-brands fa-google" style={{ color: "#ffffff" }}></i>
+                                    <i className="fa-brands fa-google" style={{ color: "#ffffff" }}
+                                   onClick={()=>navigate("/googleSign")}
+                                    ></i>
                                 </button>
                             </div>
                             <div className="divider d-flex align-items-center">

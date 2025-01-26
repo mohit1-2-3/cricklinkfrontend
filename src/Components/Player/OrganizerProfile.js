@@ -75,7 +75,7 @@ function LeftSidebar() {
             </button>
           </li>
           <li className="nav-item">
-            <button className="nav-link" onClick={() => navigate("/allTournament")}>
+            <button className="nav-link" onClick={() => navigate("/TeamsPage")}>
               Teams
             </button>
           </li>
@@ -108,7 +108,7 @@ export default function OrganizerProfile({ setSearchedList }) {
 
   const getTournamentbyId = async () => {
     try {
-      console.log("organixer id : state.id : " + id)
+      console.log("organizer id : state.id : " + id)
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
       console.log(response.data.data);
       setTourna(response.data.data);
@@ -121,6 +121,12 @@ export default function OrganizerProfile({ setSearchedList }) {
   const viewTourna = (id) => {
     navigate(`/tournamentById/${id}`)
   }
+
+  const updateSchedule = (id) =>{
+    navigate(`/updateTournament/${id}`);
+  }
+
+
   return (
     <>
       <nav
@@ -172,17 +178,17 @@ export default function OrganizerProfile({ setSearchedList }) {
         <div className="d-flex justify-content-end mb-3">
           <button
             className="btn btn-primary"
-            onClick={() => navigate("/UpcomingTournamentsCards")}
+            onClick={() => navigate("/OrganizerTournament")}
           >
             View All
           </button>
         </div>
         {/* Horizontal Scrollable Section */}
-        <div className="overflow-auto" style={{ whiteSpace: "nowrap" }}>
-          {tournament.map((tourna, index) => (
+        <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3" style={{ whiteSpace: "nowrap" }}>
+          {tournament.slice(0, 4).map((tourna, index) => (
             <div
-              key={index}
-              className="card bg-dark text-white shadow-sm border rounded d-inline-block p-3 mx-2"
+              key={index} className="card bg-dark text-white shadow-sm rounded d-inline-block p-3 mx-2"
+
               style={{ minWidth: "250px", display: "inline-block" }}
             >
               <h6 className="text-primary">{tourna.TournamentName}</h6>
@@ -204,7 +210,7 @@ export default function OrganizerProfile({ setSearchedList }) {
                 </button>
                 <button
                   className="btn btn-warning btn-sm"
-                  onClick={() => viewTourna(tourna._id)}>
+                  onClick={() => updateSchedule()}>
                   Update Schedule
                 </button>
               </div>

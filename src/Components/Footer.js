@@ -12,7 +12,7 @@ export default function footer() {
                     <HashLink id='footer-list-content' className='text-decoration-none' to='/#AboutContainer'>ABOUT</HashLink>
                     <HashLink id='footer-list-content' className='text-decoration-none' to='/#playerContainer'>PLAYER</HashLink>
                     <HashLink id='footer-list-content' className='text-decoration-none' to='/#tournamentContainer'>TOURNAMENT</HashLink>
-                    <HashLink id='footer-list-content' className='text-decoration-none' to='/teams'>TEAM</HashLink>
+                    <HashLink id='footer-list-content' className='text-decoration-none' to='/TeamsPage'>TEAM</HashLink>
                     <HashLink id='footer-list-content' className='text-decoration-none' to='/#contactUs'>CONTACT US</HashLink>
                 </div>
                 <div id="social-media">
