@@ -15,7 +15,7 @@ const userId="678cd59c25deb05611385610"
 
     const getNotificationsList = async () => {
         try {
-            const response = await axios.get( `http://localhost:3001/Team/notification/${userId}`);
+            const response = await axios.get( `http://localhost:3000/Team/notification/${userId}`);
             console.log(response.data);
             setNotifications(response.data.message);
         } catch (error) {
@@ -26,7 +26,7 @@ const userId="678cd59c25deb05611385610"
     const handleAccept = async (playerId, teamId) => {
         try {
             const status = "accepted";
-            const response = await axios.put( `http://loalhost:3001/Team/req-res`, { status, playerId, teamId });
+            const response = await axios.put( `http://loalhost:3000/Team/req-res`, { status, playerId, teamId });
             console.log(response.data);
             setStatus("accepted");
             getNotificationsList(); 
@@ -38,7 +38,7 @@ const userId="678cd59c25deb05611385610"
     const handleReject = async (playerId, teamId) => {
         try {
             const status = "rejected";
-            const response = await axios.put(`http://loalhost:3001/Team/req-res`, { status, playerId, teamId });
+            const response = await axios.put(`http://loalhost:3000/Team/req-res`, { status, playerId, teamId });
             console.log(response.data);
             setStatus("rejected");
             getNotificationsList(); 

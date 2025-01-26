@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import url from "../../URL/url.js";
 import { useSelector } from "react-redux";
+import Swal from 'sweetalert2';
 
 
 // const ParticularTournament = () => {
@@ -122,7 +123,7 @@ const TournamentById = () => {
   console.log("id : " + params.id);
   const id = useSelector((state) => state.User.user._id);
   const role = useSelector((state) => state.User.user.role);
-  console.log("user organizer id : "+ id +" nnnn "+role);
+  const token = useSelector((state) => state.User?.token);
 
   const [tournament, setTournament] = useState({});
   const [tournamentTeams, setTournamentTeams] = useState([]);
@@ -137,15 +138,16 @@ const TournamentById = () => {
     navigate(`/addTeam/${id}`)
   }
 
-  const updateTournament = (id)=>{
-      
+  const updateTournament = (id) => {
+
   }
   const getTournamentbyId = async () => {
     try {
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${params.id}`);
-      console.log(response.data.data[0]);
+      console.log("RESPONSE : "+ response.data?.data[0]);
       setTournament(response.data.data[0]);
-      console.log("Organizer id 2 : " + tournament.organizerId)
+      console.log("tournament detail : ", tournament.organizerId?._id);
+      console.log("Organizer id 2 : " + tournament.organizerId?._id)
       console.log("selector id : " + id);
     }
     catch (error) {
@@ -189,35 +191,58 @@ const TournamentById = () => {
             )}
           </ul>
 
-          <div className="mt-3 text-center" style={{fontSize: "1rem" }}>
-          <p><strong></strong> {tournament.venue}</p>
-          <p><strong>Entry Fees:</strong> {tournament.entry_fees}</p>
+          <div className="mt-3 text-center" style={{ fontSize: "1rem" }}>
+            <p><strong></strong> {tournament.venue}</p>
+            <p><strong>Entry Fees:</strong> {tournament.entry_fees}</p>
 
-          <p><strong>Start:</strong> {new Date(tournament.startDate).toLocaleDateString()}</p>
-          <p><strong>End:</strong> {new Date(tournament.endDate).toLocaleDateString()}</p>
+            <p><strong>Start:</strong> {new Date(tournament.startDate).toLocaleDateString()}</p>
+            <p><strong>End:</strong> {new Date(tournament.endDate).toLocaleDateString()}</p>
 
-          
-            <div className=" justify-content-between mt-2">
 
-            {id == tournament.organizerId ? (
-              <button
-                className="btn btn-info"
-                onClick={() => updateTournament(tournament._id)}
-              >
-                Update Tournament
-              </button>
-            ) : (
-            <button className="btn btn-warning" onClick={() => goToTeamRegistration(tournament._id)}>
-                  Register for Tournament
+            <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
+              <button className="btn btn-primary">{tournament.status}</button>
+
+
+              {!token ? ( // Agar token nahi hai toh ye button dikhaye
+                <button className="btn btn-success btn-sm"
+                  onClick={() => {
+                    Swal.fire("Sign-in Required", "Please sign in to send a request.", "warning");
+                  }}>
+                  Register
                 </button>
-            )
-          }
+              ) : id === tournament?.organizerId?._id ? (
+                <button
+                  className="btn btn-info"
+                  onClick={() => updateTournament(tournament._id)} >
+                  Update Tournament
+                </button>
+              ) : tournament.status=="inactive" ?(
+                null):( // Agar token hai toh ye button dikhaye
+                <button className="btn btn-success btn-sm"
+                  onClick={() => goToTeamRegistration(tournament._id)}>
+                  Register
+                </button>
+              )}
+            {/* <h2>User id : {id}</h2>
+            <h2>organizer id : {tournament.organizerId}</h2> */}
+              {/* 
+              // {id == tournament.organizerId ? (
+              //   <button
+              //     className="btn btn-info"
+              //     onClick={() => updateTournament(tournament._id)} >
+              //     Update Tournament
+              //   </button>
+              // ) : (
+              //   <button className="btn btn-warning" onClick={() => goToTeamRegistration(tournament._id)}>
+              //     Register for Tournament
+              //   </button>
+              // )
+              // } */}
+            </div>
           </div>
-                <button className="btn btn-primary">{tournament.status}</button>
-              </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 
 

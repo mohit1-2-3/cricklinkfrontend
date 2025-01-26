@@ -19,12 +19,13 @@ export default ({ filteredData }) => {
   }, []);
 
   let navigate = useNavigate();
-  filteredData = filteredData.length ? filteredData : PlayerList;
+  filteredData = filteredData?.length ? filteredData : PlayerList;
 
   return (
     <>
       <div className="text-decoration-underline" id="playerContainer">
-        <h2>PLAYERS</h2>
+        <h2 className="text-center mb-4"
+          style={{ fontFamily: "'Poppins', sans-serif", fontSize: "40px", color: "#ffffff", textDecoration: "underline", }}>PLAYERS</h2>
       </div>
       <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3">
         {filteredData.slice(0, 10).map((player, index) => {
@@ -53,7 +54,7 @@ export default ({ filteredData }) => {
                 <p className="card-text text-white">
                   <strong>Email:</strong> {player.email || "N/A"}
                   <br />
-                  <strong>Contact:</strong> {player.contect || "N/A"}
+                  <strong>Contact:</strong> {player.contact || "N/A"}
                   <br />
                   <strong>Role:</strong> {player.role}
                 </p>

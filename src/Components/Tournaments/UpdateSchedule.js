@@ -4,9 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import url from "../../URL/url.js";
 
 
-export function UpdateSchedule() {
 
+export function UpdateSchedule() {
     const params = useParams();
+    console.log("this is params.id : "+params.id);
     const [formData, setFormData] = useState({
         matchId: "",
         tournamentId: params.id,
@@ -17,8 +18,8 @@ export function UpdateSchedule() {
         score: "",
         date: "",
     });
-    const [responseMessage, setResponseMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    // const [responseMessage, setResponseMessage] = useState("");
+    // const [errorMessage, setErrorMessage] = useState("");
 
     const navigate = useNavigate();
 
@@ -37,9 +38,9 @@ export function UpdateSchedule() {
             matchAddToTournament(formData.matchId);
         } catch (error) {
             if (error.response) {
-                setResponseMessage(error.response.data.message || "Error occurred.");
+                alert(error.response.data.message || "Error occurred.");
             } else {
-                setResponseMessage("Network error. Please try again.");
+                alert("Network error. Please try again.");
             }
         }
     };
@@ -49,38 +50,40 @@ export function UpdateSchedule() {
             console.log("match id in adding to tournament : " + matchId);
             // let matchObjId = formData.matchId;
 
-            const findMatch = await axios.post(url.tournament.ADD_MATCH + `/findMatches`, { matchId })
-            console.log("match : " + findMatch.data);
-            const matchData = findMatch.data; 
-            const matchObj = matchData[0];                   // Error
+            // const findMatch = await axios.post(Api.ADD_MATCH + `/findMatches`,  {matchId} )
+            // console.log("match : " + findMatch.data +"  MY MESSAGE "+findMatch.data.message);
+            // const matchData = findMatch.data.data._id; 
 
-            if (findMatch) {
-                // const matchObjId = findMatch.data._id;
-                console.log("gotMatchObjId : " + matchObj);
+            // if (findMatch) {
+            //     // const matchObjId = findMatch.data._id;
+            //     console.log("gotMatchObjId : " + matchData);
 
-                const response = await axios.patch(url.tournament.TOURNAMENT_BY_ID + `/updateTournament/${params.id}`, { matchObj });
-                console.log("response : " + response.data);
+                const response = await axios.patch(url.tournament.TOURNAMENT_BY_ID + `/updateTournament/${params.id}`,  { matchId: matchId } );
+                console.log("response : " + response?.data);
+                alert(`match schedule successfully: ${response?.data}`);
 
-                setResponseMessage(`match schedule : ${response.data}`);
-                if (response.data && response.data.insert) {
-                    setResponseMessage(`Tournament Created: ${response.data.insert.TournamentName}`);
-                    setErrorMessage(""); // Clear error messages
-                } else {
-                    setErrorMessage("Unexpected response format");
-                }
-            }
+
+                // setResponseMessage(`match schedule : ${response?.data}`);
+                // if (response.data && response.data.insert) {
+                //     setResponseMessage(`Tournament Created: ${response.data?.insert?.TournamentName}`);
+                //     setErrorMessage(""); // Clear error messages
+                // } else {
+                //     setErrorMessage("Unexpected response format");
+                // }
+            
         } catch (error) {
             console.log(error);
-        }
+            alert('Match Not scheduled');
+            }
     }
 
     return (
         <div style={{ padding: "20px", maxWidth: "800px", margin: "auto"}}>
             <h2>Update Tournament Schedule</h2>
-            <div className="alert-success mb-4">
+            {/* <div className="alert-success mb-4">
                 {responseMessage && <p className="alert alret-success">{responseMessage}</p>}
                 {errorMessage && <p className="alert alert-danger">Sorry! {errorMessage}</p>}
-            </div>
+            </div> */}
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: "10px" }}>
                     <label htmlFor="tournamentId">Match ID:</label>

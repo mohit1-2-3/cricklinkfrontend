@@ -2,6 +2,7 @@ import axios from "axios";
 import url from "../../URL/url.js";
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 
 export const TeamRegister = () => {
@@ -10,6 +11,8 @@ export const TeamRegister = () => {
     const [errorMassage, setErrorMassage] = useState("");
     const [tournament, setTournament] = useState({});
     const navigate = useNavigate();
+
+        const id = useSelector((state) => state.User.user._id);
 
     const params = useParams();
 

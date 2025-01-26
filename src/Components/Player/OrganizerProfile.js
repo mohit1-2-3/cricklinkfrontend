@@ -75,7 +75,7 @@ function LeftSidebar() {
             </button>
           </li>
           <li className="nav-item">
-            <button className="nav-link" onClick={() => navigate("/allTournament")}>
+            <button className="nav-link" onClick={() => navigate("/TeamsPage")}>
               Teams
             </button>
           </li>
@@ -110,7 +110,7 @@ export default function OrganizerProfile({ setSearchedList }) {
     try {
       console.log("organizer id : state.id : " + id)
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
-      console.log(response.data.data);
+      console.log("this is tournament response in organizer profile : "+response.data.data);
       setTourna(response.data.data);
     }
     catch (error) {
@@ -155,9 +155,7 @@ export default function OrganizerProfile({ setSearchedList }) {
             />
           </div>
           <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
-            <button
-              type="button"
-              className="btn btn-primary"
+            <button className="btn btn-primary" style={{ marginRight: '30px' }}
               onClick={() => navigate(`/UpdateProfileForm/${id}`)}
             >
               Update Profile
@@ -210,7 +208,7 @@ export default function OrganizerProfile({ setSearchedList }) {
                 </button>
                 <button
                   className="btn btn-warning btn-sm"
-                  onClick={() => updateSchedule()}>
+                  onClick={() => updateSchedule(tourna._id)}>
                   Update Schedule
                 </button>
               </div>

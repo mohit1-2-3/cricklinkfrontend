@@ -13,7 +13,7 @@ function TeamsPage() {
         const response = await axios.get("http://localhost:3000/Team/viewteam");
         setTeams(response.data.Team);
         console.log("teams : "+response.data.Team);
-        console.log("teams data:", JSON.stringify(response.data.Team, null, 2));
+        // console.log("teams data:", JSON.stringify(response.data.Team, null, 2));
       } catch (err) {
         console.error("Error fetching teams data:", err);
       }
@@ -32,7 +32,7 @@ function TeamsPage() {
         Teams
       </h1>
   
-      <div className="d-flex justify-content-center align-items-center mt-5" id="teamContainer">
+      <div className="justify-content-center align-items-center mt-5" id="teamContainer">
         <div className="row text-center justify-content-center">
           {teams.map((team) => (
             <div className="col-md-4 mb-5" key={team._id}>
@@ -53,15 +53,13 @@ function TeamsPage() {
                 </p>
                 
                 <div className="d-flex justify-content-center gap-3 mt-2">
-                  <button
-                    className="btn btn-success btn-sm"
-                  >
+                  <button className="btn btn-success btn-sm"
+                    onClick={() => navigate(`/Team/req-to-join/${team._id}`)}>
                     Join
                   </button>
                   <button
                     className="btn btn-primary btn-sm"
-                    onClick={() => handleTeamClick(team._id)}
-                  >
+                    onClick={() => handleTeamClick(team._id)}>
                     View
                   </button>
                 </div>

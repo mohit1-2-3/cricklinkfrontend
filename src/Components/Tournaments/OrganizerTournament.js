@@ -27,7 +27,7 @@ const navigate = useNavigate();
         try {
           console.log("organizer id : state.id : " + id)
           let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
-          console.log(response.data.data);
+          console.log("this is tournament response : "+response.data.data);
           setTourna(response.data.data);
         }
         catch (error) {

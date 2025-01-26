@@ -21,7 +21,7 @@ export default function SignUpForm() {
         name: '',
         email: '',
         password: '',
-        contactNumber: '',
+        contact: '',
         role: '',
     });
 
@@ -32,14 +32,14 @@ export default function SignUpForm() {
 //         axios.get(url?.category?.all)
 
 
-        axios.get(url.category?.all)
+        // axios.get(url.category?.all)
 
-            .then(response => {
-                setCategories(response.data.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        //     .then(response => {
+        //         setCategories(response.data.data);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
     }, []);
 
     const fetchSubCategory = (category_id) => {
@@ -93,7 +93,7 @@ export default function SignUpForm() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        contact: formData.contactNumber,
+        contact: formData.contact,
         role: formData.user,
     };
 
@@ -101,10 +101,10 @@ export default function SignUpForm() {
         console.log("Hellooooooo.......")
         console.log('HRitik>>> data:', updatedFormData);
         const response = await axios.post(url.player.signup, updatedFormData);
-        console.responsee('API Response:', response.data);
+        console.log('API Response:', response.data);
         handleAlert('success', 'Successfully signed up');
         
-        if(response.data.user.role=="Player" || response.data.user.role=="Captain"){
+        if(response.data.user.role=="Player"){
             navigate('/PlayerMyProfile');
         }
         else if(response.data.user.role=="organizer"){
@@ -135,9 +135,7 @@ export default function SignUpForm() {
                                             <div>
                                                 <div className="d-flex flex-row align-items-center justify-content-center mb-3">
                                                     <p className="lead fw-normal mb-0 me-3">Create Account</p>
-                                                    <button type="button" className="btn btn-primary btn-floating mx-1">
-                                                        <i className="fab fa-facebook-f"></i>
-                                                    </button>
+                                                    
                                                     <ProfileContext.Provider value={{ profile, setProfile }}>
                                                         <GoogleSign />
                                                     </ProfileContext.Provider>
@@ -164,8 +162,8 @@ export default function SignUpForm() {
                                                         type="tel" 
                                                         placeholder='Enter contact number' 
                                                         onChange={(e) => handleChange(e.target.name, e.target.value)} 
-                                                        name='contactNumber' 
-                                                        value={(profile && profile.contactNumber) || formData.contactNumber} 
+                                                        name='contact' 
+                                                        value={(profile && profile.contact) || formData.contact} 
                                                         className="form-control form-control-md" 
                                                     />
                                                 </div>

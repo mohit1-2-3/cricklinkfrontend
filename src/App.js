@@ -7,7 +7,9 @@ import Home from './Components/HomePage/Home.js';
 import About from './Components/HomePage/About.js';
 import ContactUs from './Components/HomePage/ContactUs.js';
 import ForgotPassword from './Components/forgotPassword';
+import Player from './Components/HomePage/Player.js';
 
+import {CreateTeam} from './Components/Team/CreateTeam';
 
 
 
@@ -19,6 +21,8 @@ import PlayerMyProfile from './Components/Player/PlayerMyProfile';
 import UpdateProfileForm from './Components/Player/UpdateProfileForm';
 
 import {PlayerNotifications} from "./Components/Player/PlayerNotifications.js";
+import SendRequest from "./Components/Team/SendRequest"
+import {ReqCaptainToPlayer} from "./Components/Team/ReqCaptainToPlayer";
 
 
 // import Tournament from './Components/Tournaments/Tournament.js';
@@ -30,10 +34,9 @@ import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
 import {OrganizerTournament} from "./Components/Tournaments/OrganizerTournament.js";
 
 
-
+// import RegistrationForm from './Components/Team/registerTeam.js';
 import Teams from './Components/Team/team.js';
 import TeamDetail from './Components/Team/TeamDetails.js';
-import RegistrationForm from './Components/Team/registerTeam.js';
 import TeamsPage from './Components/Team/TeamPage.js';
 import PlayersDetail from './Components/Player/playersDetail.js';
 import './App.css'
@@ -47,13 +50,12 @@ function App() {
       <Route path='/signIn' element={<SignIn />} />
       <Route path='/signUp' element={<SignUp />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
-      <Route path="/Teams" element={<TeamsPage/>}></Route>
       {/* <Route path='/teams' element={<Teams />} /> */}
       {/* <Route path='/teamDetails' element={<TeamDetail />} /> */}
-      <Route path='/registerTeam' element={<RegistrationForm />} />
+      {/* <Route path='/registerTeam' element={<RegistrationForm />} /> */}
 
       <Route path='/PlayerProfile' element={<PlayerProfile />} />
-      <Route path='/players' element={<Players />} />
+      <Route path='/Player' element={<Player />} />
       <Route path="/PlayerMyProfile" element={<PlayerMyProfile />} />
       <Route path="/UpdateProfileForm/:id" element={<UpdateProfileForm />} />
       <Route path='/OrganizerProfile' element={<OrganizerProfile />} />
@@ -61,6 +63,9 @@ function App() {
 
 
       <Route path="/AllNotifications" element={<PlayerNotifications/>}/>
+
+      <Route path="/Team/req-to-join/:id" element={<SendRequest/>} ></Route>
+      <Route path="/reqCaptainToPlayer/:id" element={<ReqCaptainToPlayer/>}/>
 
 
       <Route path='/updateTournament/:id' element={<UpdateSchedule />} />
@@ -74,7 +79,9 @@ function App() {
       <Route path='/About' element={<About />} /> //teamDetails
       <Route path='/ContactUs' element={<ContactUs />} />
 
+      <Route path="/TeamsPage" element={<TeamsPage/>}></Route>
       <Route path="/Team/:id" element={<TeamDetail/>} ></Route>
+      <Route path="CreateTeam" element={<CreateTeam/>}></Route>
     <Route path="/user/:id" element={<PlayersDetail/>} ></Route>
    
     </Routes>

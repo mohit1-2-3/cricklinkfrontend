@@ -15,6 +15,7 @@ export const TournamentCreation = () => {
         teams: [],
         startDate: "",
         endDate: "",
+        entry_fees:""
     });
 
 
@@ -76,15 +77,7 @@ export const TournamentCreation = () => {
                     <label htmlFor="TournamentName" className="form-label">
                         Tournament Name:
                     </label>
-                    <input
-                        type="text"
-                        id="TournamentName"
-                        name="TournamentName"
-                        className="form-control"
-                        placeholder="Enter tournament name"
-                        value={formData.TournamentName}
-                        onChange={handleInputChange}
-                        required
+                    <input type="text" id="TournamentName" name="TournamentName" className="form-control" placeholder="Enter tournament name" value={formData.TournamentName} onChange={handleInputChange} required
                     />
                 </div>
 
@@ -92,15 +85,7 @@ export const TournamentCreation = () => {
                     <label htmlFor="organizer_name" className="form-label">
                         Venue:
                     </label>
-                    <input
-                        type="text"
-                        id="venue"
-                        name="venue"
-                        className="form-control"
-                        placeholder="Enter Venue"
-                        value={formData.venue}
-                        onChange={handleInputChange}
-                        required
+                    <input type="text" id="venue" name="venue" className="form-control" placeholder="Enter Venue" value={formData.venue} onChange={handleInputChange} required
                     />
                 </div>
 
@@ -108,14 +93,7 @@ export const TournamentCreation = () => {
                     <label htmlFor="startDate" className="form-label">
                         Start Date:
                     </label>
-                    <input
-                        type="date"
-                        id="startDate"
-                        name="startDate"
-                        className="form-control"
-                        value={formData.startDate}
-                        onChange={handleInputChange}
-                        required
+                    <input type="date" id="startDate" name="startDate" className="form-control" value={formData.startDate} onChange={handleInputChange} required
                     />
                 </div>
 
@@ -123,30 +101,14 @@ export const TournamentCreation = () => {
                     <label htmlFor="endDate" className="form-label">
                         End Date:
                     </label>
-                    <input
-                        type="date"
-                        id="endDate"
-                        name="endDate"
-                        className="form-control"
-                        value={formData.endDate}
-                        onChange={handleInputChange}
-                        required
+                    <input type="date" id="endDate" name="endDate" className="form-control" value={formData.endDate} onChange={handleInputChange} required
                     />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="endDate" className="form-label">
                         Entry Fees :
                     </label>
-                    <input
-                        type="text"
-                        id="entry_fees"
-                        name="entry_fees"
-                        className="form-control"
-                        value={formData.entry_fees}
-                        placeholder="Enetr entry Fees"
-                        onChange={handleInputChange}
-                        required
-                    />
+                    <input type="text" id="entry_fees" name="entry_fees" className="form-control" value={formData.entry_fees} placeholder="Enetr entry Fees" onChange={handleInputChange}/>
                 </div>
 
                 <button type="submit" className="btn btn-success w-100 mt-4">
