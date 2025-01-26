@@ -42,7 +42,7 @@ export default function Header({ setSearchedList }) {
                                 <HashLink className="nav-link" to="/UpcomingTournamentsCards">Tournament </HashLink>
                             </li>
                             <li className="nav-item">
-                                <HashLink className="nav-link" to="/TeamPage">Teams </HashLink>
+                                <HashLink className="nav-link" to="/TeamsPage">Teams </HashLink>
                             </li>
                             <li className="nav-item">
                                 <HashLink className="nav-link" to="/ContactUs">Contact Us </HashLink>

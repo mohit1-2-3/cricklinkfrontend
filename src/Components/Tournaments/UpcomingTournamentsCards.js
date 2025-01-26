@@ -76,7 +76,7 @@ function UpcomingTournamentsCards() {
                             <p style={{ fontSize: '1rem' }}>
                                 {tourna.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nostrum laboriosam."}
                             </p>
-                            <h2 style={{ fontSize: '1.5rem' }}>&#8377; {tourna.fees}</h2>
+                            <h2 style={{ fontSize: '1.5rem' }}>&#8377; {tourna.entry_fees}</h2>
                             <button
                                 className="btn btn-success btn-sm mt-2"
                                 onClick={() => navigateToRegister(tourna._id)}>
@@ -122,7 +122,7 @@ function UpcomingTournamentsCards() {
                             <h4>Organizer : {tourna.organizerId.name}</h4>
                             <p style={{ fontSize: '1.1rem' }}>{tourna.address}</p>
                           
-                            <h2 style={{ fontSize: '1.5rem' }}>&#8377; {tourna.fees}</h2>
+                            <h2 style={{ fontSize: '1.5rem' }}>&#8377; : {tourna.entry_fees}</h2>
                             <button
                                 className="btn btn-primary btn-sm mt-2" style={{ marginLeft: '80px' }}
                                 onClick={() => navigateToById(tourna._id)}>

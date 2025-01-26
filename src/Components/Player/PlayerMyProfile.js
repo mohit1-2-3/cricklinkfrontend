@@ -4,11 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
 import TeamsPage from "../Team/TeamPage";
-
 import { signOut } from "../../redux-config/UserSlice";
-
 
 
 function LeftSidebar() {
@@ -26,20 +23,18 @@ function LeftSidebar() {
   const name = useSelector((state) => state.User.user.name);
   const contact = useSelector((state) => state.User.user.contact);
   const email = useSelector((state) => state.User.user.email);
-  const experience = useSelector((state) => state.User.user.profile.experience);
-  const skill = useSelector((state) => state.User.user.profile.skills);
-  const location = useSelector((state) => state.User.user.profile.location);
+  const experience = useSelector((state) => state.User.user.profile?.experience);
+  const skill = useSelector((state) => state.User.user.profile?.skills);
+  const location = useSelector((state) => state.User.user.profile?.location);
   const id = useSelector((state) => state.User.user._id);
-  const role = useSelector((state) =>state.User.user.role)
 
   const profile_photo = useSelector((state) => state.User.user.profile_photo);
-  console.log("=================<<<<<<<<<>>>>>>==================");
+  console.log("=================<<<<<<<<<mohit>>>>>>==================");
   console.log(token);
   console.log(name);
-  console.log(contact);
+  console.log("-------------------------------",contact);
   console.log(email);
   console.log(player);
-  console.log(role)
 
   console.log(experience);
   console.log(skill);
@@ -147,12 +142,12 @@ function LeftSidebar() {
             </HashLink>
           </li>
           <li className="nav-item">
-            <HashLink className="nav-link" to="/teams">
+            <HashLink className="nav-link" to="/TeamPage">
               Teams
             </HashLink>
           </li>
           <li className="nav-item">
-            <HashLink className="nav-link" to="/#contactUs">
+            <HashLink className="nav-link" to="/ContactUs">
               Contact Us
             </HashLink>
           </li>
@@ -226,8 +221,9 @@ function LeftSidebar() {
           <i
             className="btn fa-solid fa-bell fa-xl"
             style={{ color: "#ffffff", marginTop: "10px" }}
-            onClick={()=>navigate(`/AllNotifications`)}
-          ></i>
+            onClick={() => navigate("/AllNotifications")} >
+              
+          </i>
 
           <button
             type="button"
@@ -236,10 +232,17 @@ function LeftSidebar() {
           >
             Update Profile
           </button>
+          <button
+          className="btn btn-success btn-sm"
+          onClick={() => navigate("/createTeam")}
+        >
+          Create Team
+        </button>
         </div>
       </div>
     </nav>
      <TeamsPage/>
+     {/* <PlayerDashboard/> */}
     </>
   );
 }

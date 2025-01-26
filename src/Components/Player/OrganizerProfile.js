@@ -75,7 +75,7 @@ function LeftSidebar() {
             </button>
           </li>
           <li className="nav-item">
-            <button className="nav-link" onClick={() => navigate("/allTournament")}>
+            <button className="nav-link" onClick={() => navigate("/TeamsPage")}>
               Teams
             </button>
           </li>

@@ -8,7 +8,7 @@ export default ({ filteredData }) => {
   const [selectedPlayerId, setSelectedPlayerId] = useState({});
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user/playerList")
+      .get("http://localhost:3001/user/playerList")
       .then((response) => {
         console.log("response.data:", response.data);
         setPlayerList(response.data.user);
@@ -17,6 +17,7 @@ export default ({ filteredData }) => {
         console.error("Error fetching players:", err);
       });
   }, []);
+  useEffect(()=>{},[PlayerList])
 
   let navigate = useNavigate();
   filteredData = filteredData.length ? filteredData : PlayerList;
@@ -27,7 +28,7 @@ export default ({ filteredData }) => {
         <h2>PLAYERS</h2>
       </div>
       <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3">
-        {filteredData.slice(0, 10).map((player, index) => {
+        {filteredData?.slice(0, 10).map((player, index) => {
           const id = player._id;
           console.log(id);
 
@@ -38,7 +39,7 @@ export default ({ filteredData }) => {
               id="player"
             >
               <img
-                src={player.profile_photo}
+                src={player?.profile_photo||"/user.webp"}
                 className="card-img-top"
                 style={{ height: "8rem" }}
                 alt="Player"
@@ -48,14 +49,14 @@ export default ({ filteredData }) => {
                   className="card-title text-nowrap"
                   style={{ color: "#ffffff" }}
                 >
-                  {player.name}
+                  {player?.name}
                 </h5>
                 <p className="card-text text-white">
-                  <strong>Email:</strong> {player.email || "N/A"}
+                  <strong>Email:</strong> {player?.email || "N/A"}
                   <br />
-                  <strong>Contact:</strong> {player.contect || "N/A"}
+                  <strong>Contact:</strong> {player?.contact || "N/A"}
                   <br />
-                  <strong>Role:</strong> {player.role}
+                  <strong>Role:</strong> {player?.role}
                 </p>
                 <button
                   className="btn btn-outline-secondary"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 
 function TeamsPage() {
@@ -10,7 +10,7 @@ function TeamsPage() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/Team/viewteam");
+        const response = await axios.get("http://localhost:3001/Team/viewteam");
         setTeams(response.data.Team);
         console.log("teams : "+response.data.Team);
         console.log("teams data:", JSON.stringify(response.data.Team, null, 2));
@@ -24,6 +24,20 @@ function TeamsPage() {
   const handleTeamClick = (id) => {
     navigate(`/Team/${id}`);
   };
+  const handleJoinClick = (team) => {
+    const playerCount = team.players.filter((player) => player !== null).length;
+
+    if (playerCount >= 11) {
+      Swal.fire({
+        title: 'Team is already complete!',
+        text: 'You cannot join this team as it already has 11 players.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });
+    } else {
+      navigate(`/Team/req-to-join/${team._id}`);
+    }
+  };
 
   return (
     <div className="container mt-4 text-white">
@@ -32,7 +46,7 @@ function TeamsPage() {
         Teams
       </h1>
   
-      <div className="d-flex justify-content-center align-items-center mt-5" id="teamContainer">
+      <div className="justify-content-center align-items-center mt-5" id="teamContainer">
         <div className="row text-center justify-content-center">
           {teams.map((team) => (
             <div className="col-md-4 mb-5" key={team._id}>
@@ -53,15 +67,13 @@ function TeamsPage() {
                 </p>
                 
                 <div className="d-flex justify-content-center gap-3 mt-2">
-                  <button
-                    className="btn btn-success btn-sm"
-                  >
+                  <button className="btn btn-success btn-sm"
+                    onClick={() => handleJoinClick(team)}>
                     Join
                   </button>
                   <button
                     className="btn btn-primary btn-sm"
-                    onClick={() => handleTeamClick(team._id)}
-                  >
+                    onClick={() => handleTeamClick(team._id)}>
                     View
                   </button>
                 </div>
