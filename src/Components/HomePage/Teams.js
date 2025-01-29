@@ -15,7 +15,7 @@ function Teams() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/Team/viewteam");
+        const response = await axios.get("http://localhost:3001/Team/viewteam");
         setTeams(response.data.Team);
         console.log("teams : " + response.data.Team);
       } catch (err) {

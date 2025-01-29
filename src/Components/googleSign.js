@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import url from "../URL/url.js";
 
 
-function GoogleDetails() {
+function GoogleSign() {
 
   const details = async(data)=>{
     console.log("----------ram");
@@ -34,4 +34,4 @@ function GoogleDetails() {
   );
 }
 
-export default GoogleDetails;
+export default GoogleSign;

@@ -28,7 +28,7 @@ export default function PlayerProfile() {
       console.log("--------------------------------------");
       // console.log(state.playerId);
       console.log("state.id : "+state.id);
-      const user = await axios.get(`http://localhost:3000/user/profile/${state.id}`)
+      const user = await axios.get(`http://localhost:3001/user/profile/${state.id}`)
       console.log("USER.DATA : "+user.data)
       setPlayerData(user.data);
     }catch(error){
@@ -42,13 +42,13 @@ export default function PlayerProfile() {
   const sendReqToPlayer = async (playerId) => {
     try {
       console.log("current user id : " + id)
-      const captain = await axios.get(`http://localhost:3000/Team/${id}`)
+      const captain = await axios.get(`http://localhost:3001/Team/${id}`)
       if(!captain){
         alert("only captain can send request");
       }
       console.log("captain id : "+ captain.data)
    
-        const requestSend = await axios.post(`http://localhost:3000/Team/reqCaptainToPlayer/${id}`, { playerId: playerId })
+        const requestSend = await axios.post(`http://localhost:3001/Team/reqCaptainToPlayer/${id}`, { playerId: playerId })
       
         console.log("request send suceesfully : " + requestSend?.data + " "+ requestSend.data?.notificationC.status);
         setButtonStatus("Request sent");
@@ -106,21 +106,12 @@ export default function PlayerProfile() {
               </form>
 
             {/* Conditionally render Send Request button */}
-            {!token ? (
-              <button className="btn btn-success mt-3 px-4 py-2" style={{ borderRadius: "5px" }}
-                onClick={() => {
-                  Swal.fire("Sign-in Required", "Please sign in to send a request.", "warning")
-                }} >
-                Send Request
-              </button>
-            ) : id == state.id ? (
+            { id == state.id ? (
               <button className="btn btn-primary" style={{ mt: 4 }}
                 onClick={() => navigate(`/UpdateProfileForm/${id}`)}>Update Profile</button>
             ) : (
-              <button className="btn btn-success mt-3 px-4 py-2" style={{ borderRadius: "5px" }}
-                onClick={() => sendReqToPlayer(state.id)} >
-                {buttonStatus}
-              </button>
+              <button className="btn btn-primary" style={{ mt: 4 }}
+              onClick={() => navigate(`/UpdateProfileForm/${id}`)}>Send Request</button>
             )}
               
           </div>

@@ -15,7 +15,7 @@ function PlayersDetail() {
     const fetchPlayerDetails = async () => {
       try {
         // Fetch data from user collection
-        const response = await axios.get(`http://localhost:3000/user/${params.id}`);
+        const response = await axios.get(`http://localhost:3001/user/${params.id}`);
         setPlayer(response.data.user); // Ensure the correct key
       } catch (err) {
         console.error("Error fetching player details:", err);
@@ -55,14 +55,14 @@ function PlayersDetail() {
           <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Email: <span style={{ color: "#000" }}>{player.email || "N/A"}</span></h5>
           <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Contact: <span style={{ color: "#000" }}>{player.contect || "N/A"}</span></h5>
           <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Role: <span style={{ color: "#000" }}>{player.role || "N/A"}</span></h5>
-          <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Skills: <span style={{ color: "#000" }}>{player.profile?.skills?.join(", ") || "N/A"}</span></h5>
+          <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Skills: <span style={{ color: "#000" }}>{player.profile?.skills|| "N/A"}</span></h5>
           <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Experience: <span style={{ color: "#000" }}>{player.profile?.experience || "N/A"}</span></h5>
           <h5 style={{ fontSize: "1.2rem", color: "#555", marginBottom: "10px" }}>Location: <span style={{ color: "#000" }}>{player.profile?.location || "N/A"}</span></h5>
         </div>
         
       </div>
     </div>
-    <TeamsPage/>
+    {/* <TeamsPage/> */}
     </>
   );
 }

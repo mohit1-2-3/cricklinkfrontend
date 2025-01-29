@@ -14,7 +14,7 @@
 
 //     const sendReqToPlayer = async () => {
 //         try {
-//             const requestSend = await axios.post(`http://localhost:3000/Team/reqCaptainToPlayer/${captainId}`, { playerId: id })
+//             const requestSend = await axios.post(`http://localhost:3001/Team/reqCaptainToPlayer/${captainId}`, { playerId: id })
 //             console.log("request send suceesfully : " + requestSend);
 //         } catch (error) {
 //             console.log("Error : " + error);

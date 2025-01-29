@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
@@ -37,7 +38,7 @@ function LeftSidebar() {
               height: "100px",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/OrganizerMyProfile", { state: { id } })}
+            onClick={() => navigate(`/OrganizerMyProfile/${id}`)}
           />
         ) : (
           <img
@@ -49,7 +50,7 @@ function LeftSidebar() {
               height: "100px",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/OrganizerMyProfile", { state: { id } })}
+            onClick={() => navigate("/OrganizerMyProfile/", { state: { id } })}
           />
         )}
         <h4 className="mt-3 text-white">{name || "Guest User"}</h4>
@@ -65,6 +66,11 @@ function LeftSidebar() {
             </button>
           </li>
           <li className="nav-item">
+            <HashLink className="nav-link" to="/#AboutContainer">
+              About
+            </HashLink>
+          </li>
+          <li className="nav-item">
             <button className="nav-link" onClick={() => navigate("/Players")}>
               Players
             </button>
@@ -78,6 +84,11 @@ function LeftSidebar() {
             <button className="nav-link" onClick={() => navigate("/TeamsPage")}>
               Teams
             </button>
+          </li>
+          <li className="nav-item">
+            <HashLink className="nav-link" to="/ContactUs">
+              Contact Us
+            </HashLink>
           </li>
         </ul>
       </div>
@@ -110,7 +121,7 @@ export default function OrganizerProfile({ setSearchedList }) {
     try {
       console.log("organizer id : state.id : " + id)
       let response = await axios.get(url.tournament.TOURNAMENT_BY_ID + `/tournamentById/${id}`);
-      console.log("this is tournament response in organizer profile : "+response.data.data);
+      console.log("this is tournament response in organizer profile : " + response.data.data);
       setTourna(response.data.data);
     }
     catch (error) {
@@ -122,7 +133,7 @@ export default function OrganizerProfile({ setSearchedList }) {
     navigate(`/tournamentById/${id}`)
   }
 
-  const updateSchedule = (id) =>{
+  const updateSchedule = (id) => {
     navigate(`/updateTournament/${id}`);
   }
 
@@ -217,7 +228,7 @@ export default function OrganizerProfile({ setSearchedList }) {
         </div>
       </div>
       <div className="container mt-5 text-white">
-        <h1 className="text-center mb-4 text-light">Tournsments</h1>
+        <h1 className="text-center mb-4 text-light">Tournaments</h1>
         <UpcomingEvent />
       </div>
 

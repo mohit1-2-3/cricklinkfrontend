@@ -19,10 +19,11 @@ import OrganizerMyProfile from './Components/Player/OrganizerMyProfile';
 import Players from './Components/Player/Players.js';
 import PlayerMyProfile from './Components/Player/PlayerMyProfile';
 import UpdateProfileForm from './Components/Player/UpdateProfileForm';
+import WithoutTeam from './Components/Player/WithoutTeam';
 
 import {PlayerNotifications} from "./Components/Player/PlayerNotifications.js";
 import SendRequest from "./Components/Team/SendRequest"
-import {ReqCaptainToPlayer} from "./Components/Team/ReqCaptainToPlayer";
+// import {ReqCaptainToPlayer} from "./Components/Team/ReqCaptainToPlayer";
 
 
 // import Tournament from './Components/Tournaments/Tournament.js';
@@ -32,6 +33,7 @@ import UpcomingTournamentsCards from "./Components/Tournaments/UpcomingTournamen
 import { TeamRegister } from "./Components/Tournaments/TeamRegistration";
 import {TournamentCreation} from "./Components/Tournaments/CreateTournament";
 import {OrganizerTournament} from "./Components/Tournaments/OrganizerTournament.js";
+import {UpdateResult} from "./Components/Tournaments/UpdateResult.js";
 
 
 // import RegistrationForm from './Components/Team/registerTeam.js';
@@ -60,12 +62,14 @@ function App() {
       <Route path="/UpdateProfileForm/:id" element={<UpdateProfileForm />} />
       <Route path='/OrganizerProfile' element={<OrganizerProfile />} />
       <Route path="/OrganizerMyProfile" element={<OrganizerMyProfile/>}/>
+      <Route path="/Players" element={<Players/>}/>
+      <Route path="/WithoutTeam" element={<WithoutTeam/>}/>
 
-
+      {/* <Route path="/AllNotifications" element={<PlayerNotifications/>}/> */}
       <Route path="/AllNotifications" element={<PlayerNotifications/>}/>
 
       <Route path="/Team/req-to-join/:id" element={<SendRequest/>} ></Route>
-      <Route path="/reqCaptainToPlayer/:id" element={<ReqCaptainToPlayer/>}/>
+      {/* <Route path="/reqCaptainToPlayer/:id" element={<ReqCaptainToPlayer/>}/> */}
 
 
       <Route path='/updateTournament/:id' element={<UpdateSchedule />} />
@@ -74,6 +78,7 @@ function App() {
       <Route path="/addTeam/:id" element={<TeamRegister/>}/>
       <Route path="/createTournamentReq" element={<TournamentCreation/>}/>
       <Route path="/OrganizerTournament" element={<OrganizerTournament/>}/>
+      <Route path="/scheduleResult/:matchId" element={<UpdateResult/>}/>
 
 
       <Route path='/About' element={<About />} /> //teamDetails
@@ -87,13 +92,6 @@ function App() {
     </Routes>
     {/* <Example/> */}
   </>
-
-const [isFormOpen, setIsFormOpen] = useState(false); 
-const openForm = () => setIsFormOpen(true); 
-const closeForm = () => setIsFormOpen(false); 
-return (
-   <div> 
-    <button onClick={openForm}>Update Profile</button> {isFormOpen && <UpdateProfileForm closeForm={closeForm} />} </div> );
 }
 
 export default App;

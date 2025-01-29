@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function SendRequest() {
     const [teams, setTeams] = useState({});
     const userid = useSelector((state) => state.User.user._id);
     const { id } = useParams();
-    console.log("player Id : "+ id);
+    const navigate=useNavigate();
 
     useEffect(() => {
         const fetchTeams = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/Team/${id}`);
+                const response = await axios.get(`http://localhost:3001/Team/${id}`);
                 setTeams(response.data);
             } catch (err) {
                 console.error("Error fetching team data:", err);
@@ -24,12 +24,12 @@ function SendRequest() {
     const sendJoinRequest = async () => {
         try {
             const requestPayload = {
-                playerId: userid, // Backend API के अनुसार playerId और teamId सही से पास करें।
+                playerId: userid, 
                 teamId: id
             };
             console.log("Request Payload:", requestPayload);
 
-            const response = await axios.post("http://localhost:3000/Team/req-to-join", requestPayload, {
+            const response = await axios.post("http://localhost:3001/Team/req-to-join", requestPayload, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -37,6 +37,7 @@ function SendRequest() {
 
             if (response.data) {
                 alert("Request sent successfully to the team captain.");
+              navigate(-1)
             } else {
                 alert("Failed to send the request.");
             }

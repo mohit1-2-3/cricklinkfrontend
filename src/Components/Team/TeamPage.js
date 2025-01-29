@@ -10,7 +10,7 @@ function TeamsPage() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/Team/viewteam");
+        const response = await axios.get("http://localhost:3001/Team/viewteam");
         setTeams(response.data.Team);
         console.log("teams : "+response.data.Team);
         // console.log("teams data:", JSON.stringify(response.data.Team, null, 2));
@@ -58,10 +58,18 @@ function TeamsPage() {
                     Join
                   </button>
                   <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => handleTeamClick(team._id)}>
-                    View
-                  </button>
+                  className="btn btn-primary"
+                  style={{ width: "120px" }}
+                  onClick={() => {
+                    if (team?.players.length > 0) {
+                      handleTeamClick(team._id);
+                    } else {
+                      alert("No player available");
+                    }
+                  }}
+                >
+                  View
+                </button>
                 </div>
                 <hr />
               </div>

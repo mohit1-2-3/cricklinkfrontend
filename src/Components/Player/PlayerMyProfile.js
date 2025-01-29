@@ -161,7 +161,12 @@ function LeftSidebar() {
               </HashLink>
             </li>
             <li className="nav-item">
-              <HashLink className="nav-link" to="/#contactUs">
+              <HashLink className="nav-link" to="/WithoutTeam">
+                Player Without Team
+              </HashLink>
+            </li>
+            <li className="nav-item">
+              <HashLink className="nav-link" to="/ContactUs">
                 Contact Us
               </HashLink>
             </li>
@@ -232,13 +237,19 @@ export default function Header({ setSearchedList }) {
             />
           </div>
           <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
-            <i
-              className="btn fa-solid fa-bell fa-xl"
-              style={{ color: "#ffffff", marginTop: "10px" }}
-              onClick={() => navigate(`/AllNotifications`)}
-            ></i>
-
+          {/* <i
+            className="btn fa-solid fa-bell fa-xl"
+            style={{ color: "#ffffff", marginTop: "10px" }}
+            onClick={() => navigate("/AllNotifications")} >
+              
+          </i> */}
             <div className="col-md-2 col-1 offset-2 offset-md-2 d-flex justify-content-center">
+            <i
+            className="btn fa-solid fa-bell fa-xl"
+            style={{ color: "#ffffff", marginTop: "10px" }}
+            onClick={() => navigate("/AllNotifications")} >
+              
+          </i>
               <button className="btn btn-primary" style={{ marginRight: '50px' }}
                 onClick={() => navigate(`/UpdateProfileForm/${id}`)}
               >

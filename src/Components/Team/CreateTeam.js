@@ -21,7 +21,7 @@ export const CreateTeam = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/Team/createTeam", createTeam);
+            const response = await axios.post("http://localhost:3001/Team/createTeam", createTeam);
 
             setSuccessMessage(response.data.message);
             // setErrorMessage("");

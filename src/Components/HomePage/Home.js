@@ -30,8 +30,9 @@ export default function Home() {
 
     return (
         <>
+        {/* <div style={{bg:"white"}}> */}
             <Header setSearchedList={setSearchedList} />
-            <div className="d-flex flex-column align-items-center gap-4">
+            <div className="d-flex flex-column align-items-center gap-4" style={{background:"linear-gradient (90deg, #002366, #ffffff)"}}>
                 {
                     searchedList ?
                         // <Players filteredData={filteredData} /> :
@@ -63,6 +64,7 @@ export default function Home() {
                 <div id="sectionLine"></div>
                 <Footer />
             </div>
+           
         </>
     );
 }

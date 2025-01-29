@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 
     // Replace with your custom API for sending OTP
     axios
-      .post('http://localhost:3000/user/sendOTP', { email })
+      .post('http://localhost:3001/user/sendOTP', { email })
       .then((response) => {
         Swal.fire({
           title: 'Success',
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
 
     // Replace with your custom API for verifying OTP and resetting password
     axios
-      .post('http://localhost:3000/user/updatePassword', {
+      .post('http://localhost:3001/user/updatePassword', {
         email,
         otp,
         newPassword,

@@ -104,8 +104,7 @@ function UpcomingTournamentsCards() {
                             ) : ( // Agar token hai toh ye button dikhaye
                                 <button
                                     className="btn btn-success btn-sm"
-                                    onClick={() => navigateToRegister(tourna._id)}
-                                >
+                                    onClick={() => navigateToRegister(tourna._id)}>
                                     Register
                                 </button>
                             )}

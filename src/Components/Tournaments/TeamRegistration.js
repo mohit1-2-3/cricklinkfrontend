@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 export const TeamRegister = () => {
     const [formData, setFormData] = useState({ team_name: "", captainEmail: "" })
-    const [successMassage, setSuccessMassage] = useState("");
-    const [errorMassage, setErrorMassage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [tournament, setTournament] = useState({});
     const navigate = useNavigate();
 
@@ -32,17 +32,16 @@ export const TeamRegister = () => {
         try {
             console.log("adding team : ")
             const response = await axios.patch(url.tournament.TOURNAMENT_BY_ID + `/addTeam/${params.id}`, formData);
-            console.log("response : "+response)
             console.log("response : " + response.data.message);
-            setSuccessMassage(response.data.message);
-            setErrorMassage("");
-            console.log(successMassage)
+            setSuccessMessage(response.data.message);
+            setErrorMessage("");
+            console.log(successMessage)
             // navigateToById(params.id)
         } catch (err) {
             if (err.response && err.response.data) {
-                setErrorMassage(err.response.data.err);
+                setErrorMessage(err.response.data.err);
             } else {
-                setErrorMassage("Internal server error. Please try again later.");
+                setErrorMessage("Internal server error. Please try again later.");
             }
             console.log("Error occurred:", err.message)
         }
@@ -57,8 +56,8 @@ export const TeamRegister = () => {
                             <div className="card-body p-10">
                                 <h2 className="text-center mb-4">Tournament Registration Form</h2>
                                 <div className="alert-success mb-4">
-                                {successMassage && <p className="alert alret-success">{successMassage}</p>}
-                                {errorMassage && <p className="alert alert-danger">Sorry! {errorMassage}</p>}
+                                {successMessage && <p className="alert alret-success">{successMessage}</p>}
+                                {errorMessage && <p className="alert alert-danger">Sorry! {errorMessage}</p>}
                                 </div>
                                 <form onSubmit={handleFormSubmit} method="patch">
                                     <div className="form-group mb-3">
