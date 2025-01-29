@@ -33,7 +33,7 @@ const store = configureStore({
     reducer: {
         Category: CategorySlice,
         SubCategory: SubCategorySlice,
-        User: UserSlice 
+        User: UserSlice
     }
 });
 

@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import "./homePage.css";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Players from "./Player.css"; // Corrected import
 
-export default ({ filteredData }) => {
-  const [PlayerList, setPlayerList] = useState([]);
-  const [selectedPlayerId, setSelectedPlayerId] = useState({});
+
+const PlayerList = ({ filteredData }) => {
+  const [playerList, setPlayerList] = useState([]);
+  const containerRef = useRef(null);
+  let navigate = useNavigate();
+
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user/playerList")
+      .get("http://localhost:3001/user/playerList")
       .then((response) => {
-        console.log("response.data:", response.data);
         setPlayerList(response.data.user);
       })
       .catch((err) => {
@@ -18,63 +20,62 @@ export default ({ filteredData }) => {
       });
   }, []);
 
-  let navigate = useNavigate();
-  filteredData = filteredData.length ? filteredData : PlayerList;
+  // Use filtered data if available; otherwise, use full player list
+  const displayData = filteredData?.length ? filteredData : playerList;
+
+  // Scroll Functions
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
+  };
 
   return (
     <>
-      <div className="text-decoration-underline" id="playerContainer">
-        <h2>PLAYERS</h2>
+      <div className="text-center" id="playerContainer">
+        <h2 className="player-title">Players</h2>
       </div>
-      <div className="container text-center d-flex justify-content-around flex-wrap gap-5 mt-3">
-        {filteredData.slice(0, 10).map((player, index) => {
-          const id = player._id;
-          console.log(id);
 
-          return (
-            <div
-              key={index}
-              className="card col-md-2 col-sm-2 bg-dark"
-              id="player"
-            >
-              <img
-                src={player.profile_photo}
-                className="card-img-top"
-                style={{ height: "8rem" }}
-                alt="Player"
-              />
-              <div className="card-body">
-                <h5
-                  className="card-title text-nowrap"
-                  style={{ color: "#ffffff" }}
-                >
-                  {player.name}
-                </h5>
-                <p className="card-text text-white">
-                  <strong>Email:</strong> {player.email || "N/A"}
-                  <br />
-                  <strong>Contact:</strong> {player.contect || "N/A"}
-                  <br />
-                  <strong>Role:</strong> {player.role}
-                </p>
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => {
-                    console.log(
-                      "Navigating to PlayerProfile with player:",
-                      player
-                    ); // Log the player data
-                    setSelectedPlayerId(id);
-                    navigate("/PlayerProfile", { state: { id } });
-                  }}
-                >
-                  View More
-                </button>
+      <div className="scroll-wrapper" style={{marginLeft:"300px", marginRight:"300px"}}>
+        {/* Left Scroll Button */}
+        <button className="scroll-button left" onClick={scrollLeft}>
+          &lt;
+        </button>
+
+        {/* Scrollable Player List */}
+        <div ref={containerRef} className="scroll-container">
+          {displayData.map((player, index) => {
+            return (
+              <div key={player._id || index} className="player-card">
+                <img src={player.profile_photo} alt={player.name} className="player-image" />
+                <div className="player-info">
+                  <h5>{player.name}</h5>
+                  <p><strong>Role:</strong> {player.role}</p>
+                  <button
+                    className="view-button"
+                    onClick={() => navigate("/PlayerProfile", { state: { id: player._id } })}
+                  >
+                    View More
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+
+        {/* Right Scroll Button */}
+        <button className="scroll-button right" onClick={scrollRight}>
+          &gt;
+        </button>
       </div>
     </>
   );
 };
+
+export default PlayerList;
